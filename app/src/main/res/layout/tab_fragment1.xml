@@ -1,14 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/newmeeting"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:text="New meeting"
+        android:background="@android:color/transparent"></Button>
+
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="This is Tab 1"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/newmeeting"
+        android:text="My meeting"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView12"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView12"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="10dp"
+        android:text="Genre"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/textView13">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/cook" />
+
+        <ImageView
+            android:id="@+id/layou"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/religion" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/layou"
+            android:layout_toEndOf="@+id/layou"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/movie" />
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/imageView4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_below="@+id/layou"
+            app:srcCompat="@drawable/music"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_marginTop="10dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/layou"
+            android:layout_below="@+id/layou"
+            app:srcCompat="@drawable/food"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/imageView3"
+            android:layout_alignTop="@+id/imageView5"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/study" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_toEndOf="@+id/imageView3"
+            app:srcCompat="@drawable/tour"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/imageView7"
+            android:layout_alignTop="@+id/imageView6"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/art" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/imageView7"
+            android:layout_toEndOf="@+id/imageView7"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@drawable/pet" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/imageView9"
+            android:layout_alignTop="@+id/imageView8"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/etc" />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

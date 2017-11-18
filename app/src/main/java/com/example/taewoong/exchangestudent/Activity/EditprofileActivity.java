@@ -12,15 +12,16 @@ import com.example.taewoong.exchangestudent.R;
  * Created by Taewoong on 2017-11-17.
  */
 
-public class MeetingInfoActivity extends AppCompatActivity{
+public class EditprofileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meetinginfo);
+        setContentView(R.layout.activity_editprofile);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
+
     }
 }

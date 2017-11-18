@@ -1,9 +1,13 @@
-package com.example.taewoong.exchangestudent.Fragment;
+package com.example.taewoong.exchangestudent.Adaptor;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.taewoong.exchangestudent.Fragment.TabFragment1;
+import com.example.taewoong.exchangestudent.Fragment.TabFragment2;
+import com.example.taewoong.exchangestudent.Fragment.TabFragment3;
 
 /**
  * Created by Taewoong on 2017-11-17.

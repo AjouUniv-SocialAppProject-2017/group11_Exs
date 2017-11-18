@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 
-import com.example.taewoong.exchangestudent.Fragment.TabPagerAdapter;
+import com.example.taewoong.exchangestudent.Adaptor.TabPagerAdapter;
 import com.example.taewoong.exchangestudent.R;
 
 public class MainActivity extends AppCompatActivity
@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity
         // Adding Toolbar to the activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
         // Initializing the TabLayout
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Tab One"));
