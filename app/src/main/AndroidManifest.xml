@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.LoginActivity">        </activity>
+        <activity android:name=".Activity.LoginActivity"></activity>
         <activity android:name=".Activity.MeetingInfoActivity"></activity>
         <activity android:name=".Activity.ChatActivity"></activity>
         <activity android:name=".Activity.NewMeetingActivity"></activity>
