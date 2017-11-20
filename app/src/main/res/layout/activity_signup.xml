@@ -62,15 +62,29 @@
         android:inputType="textPassword"
         android:hint="Re-enter PW"/>
 
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editText3"
+        android:layout_alignEnd="@+id/editText3"
+        android:layout_below="@+id/editText3"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nationality" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:text="Sign up" />
+
+
 
 </RelativeLayout>
