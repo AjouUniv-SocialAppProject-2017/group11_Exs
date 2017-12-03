@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "764585724186",
+    "firebase_url": "https://lte-ajou.firebaseio.com",
+    "project_id": "lte-ajou",
+    "storage_bucket": "lte-ajou.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764585724186:android:cbb86008b60682d4",
+        "android_client_info": {
+          "package_name": "com.example.taewoong.exchangestudent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764585724186-3jk6cik5oqbjqvra8c092mepnsnvupt4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.taewoong.exchangestudent",
+            "certificate_hash": "b9a02c203c44d19bb2c93f2bf5bee54c71be0fc6"
+          }
+        },
+        {
+          "client_id": "764585724186-a8rdoen5vm9393t4ld62q7vj6nlahpp8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAr1rutfUMQbGuaQ5VH5fdWY30GdUxVpQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764585724186-a8rdoen5vm9393t4ld62q7vj6nlahpp8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
