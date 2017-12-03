@@ -1,20 +1,28 @@
 package com.example.taewoong.exchangestudent.Activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 import com.example.taewoong.exchangestudent.Adaptor.TabPagerAdapter;
 import com.example.taewoong.exchangestudent.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
 {
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Button logout;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,9 @@ public class MainActivity extends AppCompatActivity
         tabLayout.addTab(tabLayout.newTab().setText("Tab Two"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab Three"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        logout = (Button)findViewById(R.id.logout);
+        mAuth = FirebaseAuth.getInstance();
 
         // Initializing ViewPager
         viewPager = findViewById(R.id.pager);
@@ -59,5 +70,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

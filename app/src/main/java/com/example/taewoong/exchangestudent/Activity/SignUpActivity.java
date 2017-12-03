@@ -77,11 +77,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     boolean isValidPW(){
-        boolean valid = false;
         if(password.getText().toString().equals(rePassword.getText().toString())){
-            return true;
+            return false;
         }
-        return valid;
+        return true;
     }
 
     void clickSignUp() {
