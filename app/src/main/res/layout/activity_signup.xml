@@ -24,65 +24,57 @@
     </android.support.v7.widget.Toolbar>
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
+        android:id="@+id/id"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="77dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
         android:ems="10"
         android:hint="ID"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:id="@+id/password"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/id"
+        android:layout_below="@+id/id"
+        android:layout_marginTop="23dp"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="PW"/>
+        android:hint="PW"
+        android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
+        android:id="@+id/rePassword"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="20dp"
+
+        android:layout_alignStart="@+id/password"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Re-enter PW"/>
+        android:hint="Re-enter PW"
+        android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
+        android:id="@+id/nationality"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_alignEnd="@+id/editText3"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/rePassword"
+        android:layout_below="@+id/rePassword"
+        android:layout_marginTop="18dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Nationality" />
+        android:hint="Nationality"
+        android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:id="@+id/signupBtn"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_alignStart="@+id/nationality"
+        android:layout_below="@+id/nationality"
+        android:layout_marginTop="36dp"
         android:text="Sign up" />
 
 
