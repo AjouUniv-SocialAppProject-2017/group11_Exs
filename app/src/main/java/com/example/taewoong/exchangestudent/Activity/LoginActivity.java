@@ -46,8 +46,8 @@ public class LoginActivity extends AppCompatActivity{
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        password = (EditText)findViewById(R.id.password);
-        id = (EditText)findViewById(R.id.id);
+        password = (EditText)findViewById(R.id.edit_password);
+        id = (EditText)findViewById(R.id.edit_id);
         LoginBtn = (Button)findViewById(R.id.login);
         signup = (Button)findViewById(R.id.snbutton);
         mAuth = FirebaseAuth.getInstance();
@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity{
 
     boolean isEmptyEditField(){
         boolean empty = false;
-        if(password.getText().toString() == "" || id.getText().toString() == ""){
+        if(password.getText().toString().equals("") || id.getText().toString().equals("")){
             empty = true;
         }
         return empty;
