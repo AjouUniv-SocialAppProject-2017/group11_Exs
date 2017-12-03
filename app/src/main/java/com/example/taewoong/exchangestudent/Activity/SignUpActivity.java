@@ -57,8 +57,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     boolean isEmptyEditField() {
         boolean empty = false;
-        if (id.getText().toString() == "" || password.getText().toString() == "" ||
-                rePassword.getText().toString() == "" || nationality.getText().toString() == "") {
+        if (id.getText().toString().equals("") || password.getText().toString().equals("") ||
+                rePassword.getText().toString().equals("") || nationality.getText().toString().equals("")) {
             empty = true;
         }
         return empty;
