@@ -35,7 +35,7 @@ public class TabFragment2 extends Fragment{
         View view = inflater.inflate(R.layout.tab_fragment2,container,false);
 
         //첫번째 cardView
-        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.recyclerView1);
+        RecyclerView recyclerView1 = view.findViewById(R.id.recyclerView1);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(layoutManager1);
@@ -54,7 +54,7 @@ public class TabFragment2 extends Fragment{
         recyclerView1.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
 
         //두번째 cardView
-        RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.recyclerView2);
+        RecyclerView recyclerView2 = view.findViewById(R.id.recyclerView2);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(layoutManager2);

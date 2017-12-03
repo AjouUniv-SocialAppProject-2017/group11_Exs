@@ -21,20 +21,20 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Adding Toolbar to the activity
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
         // Initializing the TabLayout
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Tab One"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab Two"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab Three"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         // Initializing ViewPager
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = findViewById(R.id.pager);
 
         // Creating TabPagerAdapter adapter
         TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());

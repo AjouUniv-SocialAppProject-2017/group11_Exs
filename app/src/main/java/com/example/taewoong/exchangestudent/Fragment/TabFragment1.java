@@ -33,7 +33,7 @@ public class TabFragment1 extends Fragment {
     {
         View view = inflater.inflate(R.layout.tab_fragment1,container,false);
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
