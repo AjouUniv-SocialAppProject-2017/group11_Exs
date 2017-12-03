@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -47,11 +48,21 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-                Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
+
+        signupBtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                clickSignUp();
+            }
+        });
+
+
     }
 
 
@@ -67,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     boolean isValidPW(){
         boolean valid = false;
-        if(password.getText().toString()==rePassword.getText().toString()){
+        if(password.getText().toString().equals(rePassword.getText().toString())){
             return true;
         }
         return valid;
