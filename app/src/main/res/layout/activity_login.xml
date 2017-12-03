@@ -25,7 +25,7 @@
     </android.support.v7.widget.Toolbar>
 
     <EditText
-        android:id="@+id/id"
+        android:id="@+id/edit_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -38,12 +38,12 @@
         android:hint="ID"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/edit_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/id"
-        android:layout_alignStart="@+id/id"
-        android:layout_below="@+id/id"
+        android:layout_alignEnd="@+id/edit_id"
+        android:layout_alignStart="@+id/edit_id"
+        android:layout_below="@+id/edit_id"
         android:layout_marginTop="26dp"
         android:ems="10"
         android:hint="PW"
@@ -53,9 +53,9 @@
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/password"
-        android:layout_alignStart="@+id/password"
-        android:layout_below="@+id/password"
+        android:layout_alignEnd="@+id/edit_password"
+        android:layout_alignStart="@+id/edit_password"
+        android:layout_below="@+id/edit_password"
         android:layout_marginTop="35dp"
         android:text="Login" />
 
