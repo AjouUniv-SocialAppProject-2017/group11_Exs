@@ -77,6 +77,15 @@
         android:layout_marginTop="36dp"
         android:text="Sign up" />
 
+    <com.google.android.gms.common.SignInButton
+
+        android:id="@+id/googleSignUpBtn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signupBtn"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
 
 
 </RelativeLayout>
