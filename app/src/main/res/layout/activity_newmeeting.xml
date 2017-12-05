@@ -84,30 +84,30 @@
         android:text="About" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/edit_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView"
         android:layout_alignBottom="@+id/textView"
-        android:layout_alignStart="@+id/editText6"
+        android:layout_alignStart="@+id/edit_Location"
         android:background="@drawable/border"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/edit_Location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
-        android:layout_alignStart="@+id/editText7"
+        android:layout_alignStart="@+id/edit_Genre"
         android:background="@drawable/border"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/edit_Genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView4"
@@ -119,34 +119,35 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/edit_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView5"
-        android:layout_alignStart="@+id/editText7"
+        android:layout_alignStart="@+id/edit_Genre"
         android:ems="10"
         android:textSize="20dp"
         android:inputType="textPersonName"
         android:background="@drawable/border" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/edit_about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText8"
-        android:layout_alignStart="@+id/editText8"
+        android:layout_alignEnd="@+id/edit_time"
+        android:layout_alignStart="@+id/edit_time"
         android:layout_alignTop="@+id/textView5"
         android:ems="10"
         android:background="@drawable/border"
         android:textSize="20dp"
         android:inputType="textMultiLine"
-        android:lines="5"/>
+        android:lines="5"
+        android:gravity="top"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_enroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText10"
+        android:layout_alignEnd="@+id/edit_about"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"

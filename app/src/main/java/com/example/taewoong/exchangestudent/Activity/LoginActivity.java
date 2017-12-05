@@ -108,10 +108,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         googleSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                 startActivityForResult(signInIntent, RC_SIGN_IN);
-                finish();
             }
         });
 
@@ -176,16 +174,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if (!task.isSuccessful()) {
-
                         }else {
                             Toast.makeText(LoginActivity.this, "FireBase아이디 생성이 완료 되었습니다", Toast.LENGTH_SHORT).show();
                         }

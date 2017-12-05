@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
         android:ems="10"
-        android:hint="ID"
+        android:hint="Email"
         android:inputType="textPersonName" />
 
     <EditText
@@ -57,27 +57,12 @@
         android:hint="Re-enter PW"
         android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/nationality"
+    <Button
+        android:id="@+id/signupBtn"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/rePassword"
         android:layout_below="@+id/rePassword"
         android:layout_marginTop="18dp"
-        android:ems="10"
-        android:hint="Nationality"
-        android:inputType="textPersonName" />
-
-    <Button
-        android:id="@+id/signupBtn"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/nationality"
-        android:layout_below="@+id/nationality"
-        android:layout_marginTop="36dp"
         android:text="Sign up" />
-
-
-
-
 </RelativeLayout>
