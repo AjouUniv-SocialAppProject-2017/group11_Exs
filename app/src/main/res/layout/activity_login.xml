@@ -26,20 +26,18 @@
 
     <EditText
         android:id="@+id/edit_id"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/googleSignUpBtn"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="177dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="46dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="ID"/>
+        android:hint="ID"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/edit_password"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/edit_id"
         android:layout_alignStart="@+id/edit_id"
@@ -51,21 +49,34 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/edit_password"
         android:layout_alignStart="@+id/edit_password"
         android:layout_below="@+id/edit_password"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="23dp"
         android:text="Login" />
 
     <Button
         android:id="@+id/snbutton"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/login"
-        android:layout_below="@+id/login"
+        android:layout_alignEnd="@+id/googleSignUpBtn"
+        android:layout_below="@+id/googleSignUpBtn"
+        android:layout_marginTop="34dp"
         android:background="#00ff0000"
         android:text="sign up" />
+
+    <com.google.android.gms.common.SignInButton
+
+        android:id="@+id/googleSignUpBtn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="14dp" />
+
+
 
 </RelativeLayout>
