@@ -14,8 +14,12 @@ import android.widget.Toast;
 
 
 import com.example.taewoong.exchangestudent.Adaptor.TabPagerAdapter;
+import com.example.taewoong.exchangestudent.Database.UserData;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -41,8 +45,9 @@ public class MainActivity extends AppCompatActivity
         tabLayout.addTab(tabLayout.newTab().setText("Tab Three"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        logout = (Button)findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
+
+        logout = (Button)findViewById(R.id.logout);
 
         // Initializing ViewPager
         viewPager = findViewById(R.id.pager);

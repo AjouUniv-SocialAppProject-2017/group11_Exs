@@ -112,7 +112,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
-
     }
 
     boolean isEmptyEditField(){

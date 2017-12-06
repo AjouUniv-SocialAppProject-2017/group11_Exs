@@ -37,7 +37,7 @@ public class NewMeetingActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newmeeting);
+        setContentView(R.layout.activity_newgroup);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -49,7 +49,6 @@ public class NewMeetingActivity extends AppCompatActivity{
 
         edit_name = (EditText)findViewById(R.id.edit_name);
         edit_Location = (EditText)findViewById(R.id.edit_Location);
-        edit_Genre = (EditText)findViewById(R.id.edit_Genre);
         edit_Time = (EditText)findViewById(R.id.edit_time);
         edit_About = (EditText)findViewById(R.id.edit_about);
         enroll = (Button)findViewById(R.id.btn_enroll);

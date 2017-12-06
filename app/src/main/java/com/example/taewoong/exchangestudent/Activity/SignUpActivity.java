@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,6 +44,8 @@ public class SignUpActivity extends AppCompatActivity{
     Button signupBtn;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseUsers;
+    FirebaseUser user;
+    String UID;
 
 
     @Override
@@ -111,7 +114,9 @@ public class SignUpActivity extends AppCompatActivity{
                                 Toast.makeText(SignUpActivity.this, "SignUp Failed", Toast.LENGTH_LONG).show();
                             }
                             else{
-                                writeNewUser(id.getText().toString());
+                                user = mAuth.getCurrentUser();
+                                UID = user.getUid();
+                                writeNewUser(id.getText().toString(),UID);
                                 Toast.makeText(SignUpActivity.this, "SignUp Success", Toast.LENGTH_LONG).show();
                                 finish();
                             }
@@ -121,11 +126,10 @@ public class SignUpActivity extends AppCompatActivity{
         }
     }
 
-    private void writeNewUser(String userEmail) {
+    private void writeNewUser(String userEmail,String UID) {
         UserData userdata = new UserData(userEmail);
         String userEmailID;
-        userEmailID = userEmail.substring(0, userEmail.indexOf('@'));
-        mDatabaseUsers.child(userEmailID).setValue(userdata);
+        mDatabaseUsers.child(UID).setValue(userdata);
     }
 }
 

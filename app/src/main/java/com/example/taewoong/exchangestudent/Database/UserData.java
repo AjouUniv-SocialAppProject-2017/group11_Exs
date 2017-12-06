@@ -11,6 +11,7 @@ public class UserData {
     public String userEmailID; // email 주소에서 @ 이전까지의 값.
     public ArrayList<String> Interest;
     public ArrayList<String> Joined_meeting;
+    public String UID;
 
 
     public UserData(){
