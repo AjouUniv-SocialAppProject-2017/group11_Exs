@@ -66,13 +66,18 @@ public class SignUpActivity extends AppCompatActivity{
         actionBar.setDisplayShowTitleEnabled(false);
 
         signupBtn.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View view) {
                 clickSignUp();
             }
         });
 
+
+
+
     }
+
 
     boolean isEmptyEditField() {
         boolean empty = false;
