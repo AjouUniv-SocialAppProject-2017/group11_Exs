@@ -6,7 +6,6 @@ package com.example.taewoong.exchangestudent.Database;
 
 public class MeetingData {
     String Location;
-    String Genre;
     String Time;
     String About;
     String Host;
@@ -15,10 +14,9 @@ public class MeetingData {
 
     }
 
-    public MeetingData(String Host, String Location, String Genre, String Time, String About){
+    public MeetingData(String Host, String Location, String Time, String About){
         this.Host = Host;
         this.Location = Location;
-        this.Genre = Genre;
         this.Time = Time;
         this.About = About;
     }

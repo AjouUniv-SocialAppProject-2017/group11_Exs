@@ -47,7 +47,6 @@ public class MeetingInfoActivity extends AppCompatActivity{
         organizerInput = (EditText) findViewById(R.id.organizer);
         topicInput = (EditText) findViewById(R.id.topic);
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -64,7 +63,6 @@ public class MeetingInfoActivity extends AppCompatActivity{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String date = dataSnapshot.getValue(String.class);
                 dateInput.setText(date);
-
             }
 
             @Override
