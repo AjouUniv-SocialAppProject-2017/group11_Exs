@@ -151,6 +151,4 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:text="Enroll" />
-
-
 </RelativeLayout>
