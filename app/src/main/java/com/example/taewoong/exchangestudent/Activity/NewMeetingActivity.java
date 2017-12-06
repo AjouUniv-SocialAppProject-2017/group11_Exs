@@ -25,11 +25,10 @@ public class NewMeetingActivity extends AppCompatActivity{
 
     EditText edit_name;
     EditText edit_Location;
-    EditText edit_Genre;
     EditText edit_Time;
     EditText edit_About;
     Button enroll;
-    String Name, Location, Genre, Time, About, Host;
+    String Name, Location, Time, About, Host;
     private DatabaseReference mDatabaseMeeting;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
@@ -56,18 +55,17 @@ public class NewMeetingActivity extends AppCompatActivity{
         enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edit_name.getText().toString().equals("")||edit_Location.getText().toString().equals("")||edit_Genre.getText().toString().equals("")||edit_Time.getText().toString().equals("")||edit_About.getText().toString().equals("")){
+                if(edit_name.getText().toString().equals("")||edit_Location.getText().toString().equals("")||edit_Time.getText().toString().equals("")||edit_About.getText().toString().equals("")){
                     Toast.makeText(NewMeetingActivity.this, "Plz fill in all the blanks", Toast.LENGTH_LONG).show();
                 }else{
                     currentUser = mAuth.getCurrentUser();
                     Name = edit_name.getText().toString();
                     Location = edit_Location.getText().toString();
-                    Genre = edit_Genre.getText().toString();
                     Time = edit_Time.getText().toString();
                     About = edit_About.getText().toString();
                     Host = currentUser.getEmail();
 
-                    writeNewUser(Name,Host,Location,Genre,Time,About);
+                    writeNewUser(Name,Host,Location,Time,About);
                     finish();
                 }
             }
@@ -75,8 +73,8 @@ public class NewMeetingActivity extends AppCompatActivity{
 
     }
 
-    private void writeNewUser(String Name, String Host, String Location, String Genre, String Time, String About) {
-        MeetingData meetingData = new MeetingData(Host, Location, Genre, Time, About);
+    private void writeNewUser(String Name, String Host, String Location, String Time, String About) {
+        MeetingData meetingData = new MeetingData(Host, Location, Time, About);
         mDatabaseMeeting.child(Name).setValue(meetingData);
     }
 }
