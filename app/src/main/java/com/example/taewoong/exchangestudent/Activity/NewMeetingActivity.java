@@ -25,6 +25,7 @@ public class NewMeetingActivity extends AppCompatActivity{
 
     EditText edit_name;
     EditText edit_Location;
+    EditText edit_Genre;
     EditText edit_Time;
     EditText edit_About;
     Button enroll;
