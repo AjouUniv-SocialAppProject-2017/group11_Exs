@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.example.taewoong.exchangestudent.Activity.NewGroupActivity;
 import com.example.taewoong.exchangestudent.Activity.NewMeetingActivity;
 import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter;
 import com.example.taewoong.exchangestudent.R;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 
 public class TabFragment1 extends Fragment {
-    Button newmeeting_btn;
+    Button newgroup_btn;
 
     final int ITEM_SIZE = 5;
     public TabFragment1(){
@@ -42,7 +43,7 @@ public class TabFragment1 extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        newmeeting_btn = (Button)view.findViewById(R.id.newmeeting);
+        newgroup_btn = (Button)view.findViewById(R.id.newgroup);
 
         List<item> items = new ArrayList<>();
         item[] item = new item[ITEM_SIZE];
@@ -52,10 +53,10 @@ public class TabFragment1 extends Fragment {
         item[3] = new item(R.drawable.d, "Camping\n11월 20일-26일");
         item[4] = new item(R.drawable.e, "Tea time\n11월 21일(화)");
 
-        newmeeting_btn.setOnClickListener(new View.OnClickListener() {
+        newgroup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), NewMeetingActivity.class);
+                Intent intent = new Intent(getContext(), NewGroupActivity.class);
                 startActivity(intent);
             }
         });

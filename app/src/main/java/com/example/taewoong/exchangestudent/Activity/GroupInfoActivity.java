@@ -10,10 +10,9 @@ import com.example.taewoong.exchangestudent.R;
  * Created by Taewoong on 2017-12-06.
  */
 
-public class NewGroupActivity extends AppCompatActivity {
+public class GroupInfoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creategroup);
-
+        setContentView(R.layout.activity_groupinfo);
     }
 }
