@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.Toolbar
@@ -48,33 +53,33 @@
         android:textColor="@android:color/black"/>
 
     <TextView
-        android:id="@+id/dateForm"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView6"
         android:layout_below="@+id/textView6"
         android:layout_marginTop="10dp"
-        android:text="Date"
+        android:text="Name"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"/>
 
     <EditText
-        android:id="@+id/date"
+        android:id="@+id/nameForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/dateForm"
-        android:layout_below="@+id/dateForm"
+        android:layout_alignStart="@+id/name"
+        android:layout_below="@+id/name"
         android:layout_toStartOf="@+id/imageButton"
         android:ems="10"
         android:inputType="date" />
 
     <TextView
-        android:id="@+id/timeForm"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/date"
-        android:layout_below="@+id/date"
+        android:layout_alignStart="@+id/nameForm"
+        android:layout_below="@+id/nameForm"
         android:layout_marginTop="8dp"
         android:text="Time"
         android:textSize="20sp"
@@ -82,21 +87,43 @@
         android:textColor="@android:color/black"/>
 
     <EditText
-        android:id="@+id/time"
+        android:id="@+id/timeForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/timeForm"
-        android:layout_below="@+id/timeForm"
+        android:layout_alignStart="@+id/time"
+        android:layout_below="@+id/time"
         android:layout_toStartOf="@+id/imageButton"
         android:ems="10"
         android:inputType="date" />
 
     <TextView
-        android:id="@+id/costForm"
+        android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/time"
-        android:layout_below="@+id/time"
+        android:layout_alignStart="@+id/timeForm"
+        android:layout_below="@+id/timeForm"
+        android:layout_marginTop="8dp"
+        android:text="Location"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <EditText
+        android:id="@+id/locationForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/location"
+        android:layout_below="@+id/location"
+        android:layout_toStartOf="@+id/imageButton"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/locationForm"
+        android:layout_below="@+id/locationForm"
         android:layout_marginTop="8dp"
         android:text="Cost"
         android:textSize="20sp"
@@ -104,58 +131,71 @@
         android:textColor="@android:color/black"/>
 
     <EditText
-        android:id="@+id/cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/costForm"
-        android:layout_below="@+id/costForm"
-        android:layout_toStartOf="@+id/imageButton"
-        android:ems="10"
-        android:inputType="date" />
-
-    <TextView
-        android:id="@+id/organizerForm"
+        android:id="@+id/costForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/cost"
         android:layout_below="@+id/cost"
-        android:layout_marginTop="8dp"
-        android:text="Organizer"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"/>
-
-    <EditText
-        android:id="@+id/organizer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/organizerForm"
-        android:layout_below="@+id/organizerForm"
         android:layout_toStartOf="@+id/imageButton"
         android:ems="10"
         android:inputType="date" />
+
 
     <TextView
-        android:id="@+id/topicForm"
+        android:id="@+id/about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/organizer"
-        android:layout_below="@+id/organizer"
+        android:layout_alignStart="@+id/costForm"
+        android:layout_below="@+id/costForm"
         android:layout_marginTop="8dp"
-        android:text="Topic"
+        android:text="About"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"/>
 
     <EditText
-        android:id="@+id/topic"
+        android:id="@+id/aboutForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/topicForm"
-        android:layout_below="@+id/topicForm"
+        android:layout_alignStart="@+id/about"
+        android:layout_below="@+id/about"
         android:layout_toStartOf="@+id/imageButton"
         android:ems="10"
         android:inputType="date" />
 
 
+
+    <TextView
+        android:id="@+id/member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/aboutForm"
+        android:layout_below="@+id/aboutForm"
+        android:layout_marginTop="8dp"
+        android:text="Member"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/border">
+
+
+
+    <ListView
+        android:id="@+id/memberForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageButton"
+        android:layout_below="@+id/aboutForm"
+        android:layout_marginEnd="16dp">
+
+    </ListView>
+
+    </ScrollView>
 </RelativeLayout>
+</ScrollView>

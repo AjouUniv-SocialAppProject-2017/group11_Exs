@@ -1,12 +1,16 @@
 package com.example.taewoong.exchangestudent.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.EditText;
 
+import com.example.taewoong.exchangestudent.Database.GroupData;
+import com.example.taewoong.exchangestudent.Database.MeetingData;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,19 +24,20 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MeetingInfoActivity extends AppCompatActivity{
 
-    EditText dateInput;
-    EditText timeInput;
-    EditText costInput;
-    EditText organizerInput;
-    EditText topicInput;
+    String Name;
+    String Time;
+    String Location;
+    String Cost;
+    String About;
 
 
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference meetingAbout = mDatabase.child("Meetings").child("About");
-    DatabaseReference meetingGenre = mDatabase.child("Meetings").child("Genre");
-    DatabaseReference meetingHost = mDatabase.child("Meetings").child("Host");
-    DatabaseReference meetingLoaction = mDatabase.child("Meetings").child("Location");
-    DatabaseReference meetingTime = mDatabase.child("Meetings").child("Time");
+    EditText meeting_name;
+    EditText meeting_time;
+    EditText meeting_location;
+    EditText meeting_cost;
+    EditText meeting_about;
+
+    private DatabaseReference mMeetingReference;
 
 
 
@@ -40,92 +45,47 @@ public class MeetingInfoActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meetinginfo);
-
-        dateInput = (EditText) findViewById(R.id.date);
-        timeInput = (EditText) findViewById(R.id.time);
-        costInput = (EditText) findViewById(R.id.cost);
-        organizerInput = (EditText) findViewById(R.id.organizer);
-        topicInput = (EditText) findViewById(R.id.topic);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
+
+        meeting_name = (EditText)findViewById(R.id.nameForm);
+        meeting_time = (EditText)findViewById(R.id.timeForm);
+        meeting_location = (EditText)findViewById(R.id.locationForm);
+        meeting_cost = (EditText)findViewById(R.id.costForm);
+        meeting_about = (EditText)findViewById(R.id.aboutForm);
+
+        mMeetingReference = FirebaseDatabase.getInstance().getReference("groups").child("도깨비").child("meetings");
+
+        mMeetingReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                MeetingData meetingData = dataSnapshot.getValue(MeetingData.class);
+                Name = meetingData.name;
+                Time = meetingData.time;
+                Location = meetingData.location;
+                Cost = meetingData.cost;
+                About = meetingData.about;
+                Log.e("read", Name + " " + Time + " "
+                        + Location + " " + Cost + " " + About + " " );
+                meeting_name.setText(Name);
+                meeting_time.setText(Time);
+                meeting_location.setText(Location);
+                meeting_cost.setText(Cost);
+                meeting_about.setText(About);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        meetingAbout.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String date = dataSnapshot.getValue(String.class);
-                dateInput.setText(date);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        meetingGenre.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String date = dataSnapshot.getValue(String.class);
-                dateInput.setText(date);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        meetingHost.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String date = dataSnapshot.getValue(String.class);
-                dateInput.setText(date);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        meetingLoaction.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String date = dataSnapshot.getValue(String.class);
-                dateInput.setText(date);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        meetingTime.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String date = dataSnapshot.getValue(String.class);
-                dateInput.setText(date);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
     }
-}
+
