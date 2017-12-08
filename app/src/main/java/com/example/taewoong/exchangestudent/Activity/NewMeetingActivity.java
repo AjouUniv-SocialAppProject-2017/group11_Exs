@@ -65,7 +65,7 @@ public class NewMeetingActivity extends AppCompatActivity{
                     About = edit_About.getText().toString();
                     Host = currentUser.getEmail();
 
-                    writeNewUser(Name,Host,Location,Time,About);
+                    writeNewMeeting(Name,Host,Location,Time,About);
                     finish();
                 }
             }
@@ -73,7 +73,7 @@ public class NewMeetingActivity extends AppCompatActivity{
 
     }
 
-    private void writeNewUser(String Name, String Host, String Location, String Time, String About) {
+    private void writeNewMeeting(String Name, String Host, String Location, String Time, String About) {
         MeetingData meetingData = new MeetingData(Host, Location, Time, About);
         mDatabaseMeeting.child(Name).setValue(meetingData);
     }

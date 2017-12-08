@@ -46,14 +46,15 @@
             android:id="@+id/newMeeting_btn"
             android:layout_width="50dp"
             android:layout_height="30dp"
-            android:layout_alignEnd="@+id/scrollView2"
             android:layout_alignTop="@+id/imageButton"
+            android:layout_marginEnd="13dp"
+            android:layout_toStartOf="@+id/imageButton"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/chat_bubble" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/group_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -65,33 +66,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/nameForm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView6"
-            android:layout_below="@+id/textView6"
-            android:layout_marginTop="10dp"
-            android:text="Name"
-            android:textColor="@android:color/black"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/nameForm"
-            android:layout_below="@+id/nameForm"
-            android:layout_toStartOf="@+id/imageButton"
-            android:ems="10"
-            android:inputType="date" />
-
-        <TextView
             android:id="@+id/regionForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/name"
-            android:layout_below="@+id/name"
+            android:layout_alignStart="@+id/group_name"
+            android:layout_below="@+id/group_name"
             android:layout_marginTop="8dp"
             android:text="Region"
             android:textColor="@android:color/black"
@@ -99,7 +78,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/cost"
+            android:id="@+id/edit_region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/regionForm"
@@ -112,8 +91,8 @@
             android:id="@+id/genreForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/cost"
-            android:layout_below="@+id/cost"
+            android:layout_alignStart="@+id/edit_region"
+            android:layout_below="@+id/edit_region"
             android:layout_marginTop="8dp"
             android:text="Genre"
             android:textColor="@android:color/black"
@@ -121,7 +100,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/location"
+            android:id="@+id/edit_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/genreForm"
@@ -135,8 +114,8 @@
             android:id="@+id/aboutForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/location"
-            android:layout_below="@+id/location"
+            android:layout_alignStart="@+id/edit_genre"
+            android:layout_below="@+id/edit_genre"
             android:layout_marginTop="8dp"
             android:text="About"
             android:textColor="@android:color/black"
@@ -144,7 +123,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/about"
+            android:id="@+id/edit_about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/aboutForm"
@@ -152,15 +131,17 @@
             android:layout_toStartOf="@+id/imageButton"
             android:background="@drawable/border"
             android:ems="10"
+            android:gravity="top"
             android:inputType="textMultiLine"
+            android:padding="3dp"
             android:lines="5" />
 
         <TextView
             android:id="@+id/attendMemberForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/about"
-            android:layout_below="@+id/about"
+            android:layout_alignStart="@+id/edit_about"
+            android:layout_below="@+id/edit_about"
             android:layout_marginTop="8dp"
             android:text="Attending Member"
             android:textColor="@android:color/black"

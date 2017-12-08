@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_marginStart="21dp"
+        android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/textView5"
         android:background="@drawable/border"
         android:ems="10"
@@ -83,10 +83,10 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/edit_Location"
+        android:id="@+id/edit_Genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/edit_time"
+        android:layout_alignStart="@+id/edit_region"
         android:layout_alignTop="@+id/textView3"
         android:background="@drawable/border"
         android:ems="10"
@@ -94,7 +94,7 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/edit_time"
+        android:id="@+id/edit_region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/edit_name"
@@ -108,8 +108,8 @@
         android:id="@+id/edit_about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/edit_Location"
-        android:layout_below="@+id/edit_Location"
+        android:layout_alignStart="@+id/edit_Genre"
+        android:layout_below="@+id/edit_Genre"
         android:layout_marginTop="42dp"
         android:background="@drawable/border"
         android:ems="10"

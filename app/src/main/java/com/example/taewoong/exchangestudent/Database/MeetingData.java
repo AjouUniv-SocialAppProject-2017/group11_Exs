@@ -5,10 +5,10 @@ package com.example.taewoong.exchangestudent.Database;
  */
 
 public class MeetingData {
-    String Location;
-    String Time;
-    String About;
-    String Host;
+    public String Location;
+    public String Time;
+    public String About;
+    public String Host;
 
     public MeetingData(){
 

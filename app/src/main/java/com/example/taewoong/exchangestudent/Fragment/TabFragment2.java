@@ -41,7 +41,7 @@ public class TabFragment2 extends Fragment{
         recyclerView1.setLayoutManager(layoutManager1);
         List<item> items = new ArrayList<>();
         item[] item = new item[ITEM_SIZE];
-        item[0] = new item(R.drawable.a, "Lag Exchange\n11월 17일-19일");
+        item[0] = new item(R.drawable.a, "도깨비");
         item[1] = new item(R.drawable.b, "Palace tour\n11월 17일(금)");
         item[2] = new item(R.drawable.c, "DMZ tour\n11월 18일(토)");
         item[3] = new item(R.drawable.d, "Camping\n11월 20일-26일");

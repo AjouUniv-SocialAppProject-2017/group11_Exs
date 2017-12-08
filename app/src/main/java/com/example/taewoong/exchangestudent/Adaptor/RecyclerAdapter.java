@@ -1,6 +1,7 @@
 package com.example.taewoong.exchangestudent.Adaptor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.taewoong.exchangestudent.Activity.GroupInfoActivity;
 import com.example.taewoong.exchangestudent.Fragment.item;
 import com.example.taewoong.exchangestudent.R;
 
@@ -47,7 +49,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, GroupInfoActivity.class);
+                intent.putExtra("Group_title",item.getTitle());
+                context.startActivity(intent);
             }
         });
     }
