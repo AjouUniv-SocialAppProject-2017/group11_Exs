@@ -163,6 +163,17 @@
         android:ems="10"
         android:inputType="date" />
 
+        <TextView
+            android:id="@+id/attendMemberForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/about"
+            android:layout_below="@+id/about"
+            android:layout_marginTop="8dp"
+            android:text="Attending Member"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
 
 
     <TextView

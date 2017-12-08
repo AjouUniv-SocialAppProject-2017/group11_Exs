@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class NewGroupActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabaseMeeting;
+    private DatabaseReference mDatabaseUser;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
@@ -50,6 +52,8 @@ public class NewGroupActivity extends AppCompatActivity {
         actionBar.setDisplayShowTitleEnabled(false);
 
         mDatabaseMeeting = FirebaseDatabase.getInstance().getReference("groups");
+        mDatabaseUser = FirebaseDatabase.getInstance().getReference("users");
+
         mAuth = FirebaseAuth.getInstance();
 
         edit_name = (EditText)findViewById(R.id.edit_name);
@@ -79,5 +83,6 @@ public class NewGroupActivity extends AppCompatActivity {
     private void writeNewUser(String Name, String Host, String Region,String Genre, String About) {
         GroupData groupData = new GroupData(Host, Region, Genre, About);
         mDatabaseMeeting.child(Name).setValue(groupData);
+        mDatabaseUser.child(currentUser.getUid()).child("OrgGroup").push().setValue(Name);
     }
 }

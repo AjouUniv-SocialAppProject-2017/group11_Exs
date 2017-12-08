@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Meeting Info"
+                android:text="Group Info"
                 android:textColor="#fff"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -161,7 +161,5 @@
                 android:layout_width="290dp"
                 android:layout_height="wrap_content"></ListView>
         </ScrollView>
-
-
     </RelativeLayout>
 </ScrollView>
