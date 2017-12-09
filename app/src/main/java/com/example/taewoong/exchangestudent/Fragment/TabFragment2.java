@@ -55,7 +55,6 @@ public class TabFragment2 extends Fragment{
         mMyGroupReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("JoinedGroup");
         mOrgGroupReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("OrgGroup");
 
-
         //첫번째 cardView
         recyclerView1 = view.findViewById(R.id.recyclerView1);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
@@ -164,4 +163,10 @@ public class TabFragment2 extends Fragment{
         super.onStart();
     }
 
+    @Override
+    public void onResume() {
+        recyclerView2.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
+        recyclerView1.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1));
+        super.onResume();
+    }
 }

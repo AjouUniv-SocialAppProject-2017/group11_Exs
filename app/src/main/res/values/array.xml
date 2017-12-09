@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genre">
+        <item>Cook</item>
+        <item>Religion</item>
+        <item>Movie</item>
+        <item>Trip</item>
+        <item>Pet</item>
+        <item>Music</item>
+        <item>Food</item>
+        <item>WorkOut</item>
+        <item>Art</item>
+        <item>Etc</item>
+    </string-array>
+</resources>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.taewoong.exchangestudent.Database.GroupData;
@@ -28,12 +29,13 @@ public class NewGroupActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabaseMeeting;
     private DatabaseReference mDatabaseUser;
+    private DatabaseReference mDatabaseGenre;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
     EditText edit_name;
     EditText edit_region;
-    EditText edit_genre;
+    Spinner spinner_genre;
     EditText edit_about;
     Button enroll;
 
@@ -53,25 +55,26 @@ public class NewGroupActivity extends AppCompatActivity {
 
         mDatabaseMeeting = FirebaseDatabase.getInstance().getReference("groups");
         mDatabaseUser = FirebaseDatabase.getInstance().getReference("users");
+        mDatabaseGenre = FirebaseDatabase.getInstance().getReference("genre");
 
         mAuth = FirebaseAuth.getInstance();
 
         edit_name = (EditText)findViewById(R.id.edit_name);
         edit_region = (EditText)findViewById(R.id.edit_region);
-        edit_genre = (EditText)findViewById(R.id.edit_Genre);
+        spinner_genre = (Spinner)findViewById(R.id.edit_Genre);
         edit_about = (EditText)findViewById(R.id.edit_about);
         enroll = (Button)findViewById(R.id.btn_enroll);
 
         enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edit_name.getText().toString().equals("")||edit_region.getText().toString().equals("")||edit_genre.getText().toString().equals("")||edit_about.getText().toString().equals("")){
+                if(edit_name.getText().toString().equals("")||edit_region.getText().toString().equals("")||spinner_genre.getSelectedItem().toString().equals("")||edit_about.getText().toString().equals("")){
                     Toast.makeText(NewGroupActivity.this, "Plz fill in all the blanks", Toast.LENGTH_LONG).show();
                 }else{
                     currentUser = mAuth.getCurrentUser();
                     name = edit_name.getText().toString();
                     region = edit_region.getText().toString();
-                    genre = edit_genre.getText().toString();
+                    genre = spinner_genre.getSelectedItem().toString();
                     about = edit_about.getText().toString();
                     writeNewUser(name, currentUser.getEmail(),region,genre,about);
                     finish();
@@ -85,5 +88,6 @@ public class NewGroupActivity extends AppCompatActivity {
         mDatabaseMeeting.child(Name).setValue(groupData);
         mDatabaseUser.child(currentUser.getUid()).child("OrgGroup").push().setValue(Name);
         mDatabaseUser.child(currentUser.getUid()).child("JoinedGroup").push().setValue(Name);
+        mDatabaseGenre.child(Genre).push().setValue(Name);
     }
 }
