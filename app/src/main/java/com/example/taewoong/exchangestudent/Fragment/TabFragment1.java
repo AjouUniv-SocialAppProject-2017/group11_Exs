@@ -66,12 +66,26 @@ public class TabFragment1 extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mMyMeetingReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("JoinedMeeting");
         items = new ArrayList<>();
-        mMyMeetingReference.addValueEventListener(new ValueEventListener() {
+
+        mMyMeetingReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot dsp : dataSnapshot.getChildren()){
-                    items.add(new item(R.drawable.a,dsp.getValue(String.class)));
-                }
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                items.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -79,6 +93,17 @@ public class TabFragment1 extends Fragment {
 
             }
         });
+//        mMyMeetingReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                items.add(new item(R.drawable.a,dataSnapshot.getValue(String.class)));
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
         newgroup_btn = (Button)view.findViewById(R.id.newgroup);
         newgroup_btn.setOnClickListener(new View.OnClickListener() {

@@ -73,7 +73,6 @@ public class GroupInfoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GroupData groupData = dataSnapshot.getValue(GroupData.class);
-                Log.e("dataSnapshot",dataSnapshot+"");
                 About = groupData.About;
                 Genre = groupData.Genre;
                 Region = groupData.Region;

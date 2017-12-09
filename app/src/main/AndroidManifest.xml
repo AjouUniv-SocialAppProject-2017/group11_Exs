@@ -25,6 +25,8 @@
         <activity android:name=".Activity.EditprofileActivity"></activity>
         <activity android:name=".Activity.NewGroupActivity"></activity>
         <activity android:name=".Activity.GroupInfoActivity"></activity>
+        <activity android:name=".Activity.CategorizedGroupActivity"/>
+        <activity android:name=".Activity.CategorizedGroupActivityMain"/>
 
     </application>
 

@@ -13,6 +13,7 @@ import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_group;
 import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_meeting;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,12 +64,25 @@ public class TabFragment2 extends Fragment{
 
         items1 = new ArrayList<>();
 
-        mMyGroupReference.addValueEventListener(new ValueEventListener() {
+        mMyGroupReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot dsp : dataSnapshot.getChildren()){
-                    items1.add(new item(R.drawable.a,dsp.getValue(String.class)));
-                }
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                items1.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -76,6 +90,18 @@ public class TabFragment2 extends Fragment{
 
             }
         });
+//        mMyGroupReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot dsp : dataSnapshot.getChildren()){
+//                    items1.add(new item(R.drawable.a,dsp.getValue(String.class)));
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
         recyclerView1.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1));
 
@@ -86,12 +112,26 @@ public class TabFragment2 extends Fragment{
         recyclerView2.setLayoutManager(layoutManager2);
 
         items2 = new ArrayList<>();
-        mOrgGroupReference.addValueEventListener(new ValueEventListener() {
+
+        mOrgGroupReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot dsp : dataSnapshot.getChildren()){
-                    items2.add(new item(R.drawable.a,dsp.getValue(String.class)));
-                }
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                items2.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -99,6 +139,19 @@ public class TabFragment2 extends Fragment{
 
             }
         });
+//        mOrgGroupReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot dsp : dataSnapshot.getChildren()){
+//                    items2.add(new item(R.drawable.a,dsp.getValue(String.class)));
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
         recyclerView2.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
         return view;
