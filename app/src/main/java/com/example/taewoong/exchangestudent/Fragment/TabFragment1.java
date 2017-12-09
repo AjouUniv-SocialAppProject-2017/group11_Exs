@@ -93,6 +93,8 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreCook","cook");
+
                 startActivity(intent);
                 getActivity().finish();
             }

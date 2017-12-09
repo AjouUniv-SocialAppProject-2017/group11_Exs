@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.taewoong.exchangestudent.Adaptor.MyAdapter;
 import com.example.taewoong.exchangestudent.R;
+import com.google.firebase.database.DatabaseReference;
 
 /**
  * Created by wonseoklee on 2017. 12. 9..
@@ -18,6 +19,8 @@ import com.example.taewoong.exchangestudent.R;
 public class CategorizedGroupActivity extends AppCompatActivity {
 
     private ListView mListView;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

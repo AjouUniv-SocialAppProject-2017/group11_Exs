@@ -2,6 +2,7 @@ package com.example.taewoong.exchangestudent.Adaptor;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
