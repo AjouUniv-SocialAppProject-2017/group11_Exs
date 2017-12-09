@@ -84,5 +84,6 @@ public class NewGroupActivity extends AppCompatActivity {
         GroupData groupData = new GroupData(Host, Region, Genre, About);
         mDatabaseMeeting.child(Name).setValue(groupData);
         mDatabaseUser.child(currentUser.getUid()).child("OrgGroup").push().setValue(Name);
+        mDatabaseUser.child(currentUser.getUid()).child("JoinedGroup").push().setValue(Name);
     }
 }

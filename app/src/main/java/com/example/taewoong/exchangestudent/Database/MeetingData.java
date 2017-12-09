@@ -7,19 +7,20 @@ package com.example.taewoong.exchangestudent.Database;
 public class MeetingData {
 
     public String name;
-    public String cost;
-    public String location;
-    public String time;
-    public String about;
+    public String Cost;
+    public String Location;
+    public String Time;
+    public String About;
+    public String Group;
 
     public MeetingData() {
     }
 
-    public MeetingData(String name, String cost, String location, String time, String about) {
-        this.name = name;
-        this.cost = cost;
-        this.location = location;
-        this.time = time;
-        this.about = about;
+    public MeetingData(String cost, String location, String time, String about,String group) {
+        this.Cost = cost;
+        this.Location = location;
+        this.Time = time;
+        this.About = about;
+        this.Group = group;
     }
 }

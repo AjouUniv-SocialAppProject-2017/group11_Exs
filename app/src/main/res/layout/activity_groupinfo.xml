@@ -42,16 +42,16 @@
             android:scaleType="fitXY"
             app:srcCompat="@drawable/chat_bubble" />
 
-        <ImageButton
+        <Button
             android:id="@+id/newMeeting_btn"
-            android:layout_width="50dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_alignTop="@+id/imageButton"
-            android:layout_marginEnd="13dp"
+            android:layout_marginEnd="12dp"
             android:layout_toStartOf="@+id/imageButton"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/chat_bubble" />
+            android:text="ADD MEETING" />
 
         <TextView
             android:id="@+id/group_name"
@@ -159,7 +159,8 @@
             <ListView
                 android:id="@+id/memberlist"
                 android:layout_width="290dp"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content">
+            </ListView>
         </ScrollView>
     </RelativeLayout>
 </ScrollView>

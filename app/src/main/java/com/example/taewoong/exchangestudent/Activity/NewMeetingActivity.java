@@ -1,5 +1,6 @@
 package com.example.taewoong.exchangestudent.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -27,29 +28,39 @@ public class NewMeetingActivity extends AppCompatActivity{
     EditText edit_Location;
     EditText edit_Time;
     EditText edit_About;
+    EditText edit_Cost;
     Button enroll;
-    String Name, Location, Time, About, Host;
+    String Name, Location, Time, About, Cost, Group;
+    String Group_title;
     private DatabaseReference mDatabaseMeeting;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    private DatabaseReference mDatabaseUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creategroup);
+        setContentView(R.layout.activity_createmeeting);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        mDatabaseMeeting = FirebaseDatabase.getInstance().getReference("meetings");
+
+        Intent intent = getIntent();
+        Group_title = intent.getStringExtra("Group_title");
+
+        mDatabaseMeeting = FirebaseDatabase.getInstance().getReference("groups").child(Group_title).child("meetings");
+        mDatabaseUser = FirebaseDatabase.getInstance().getReference("users");
         mAuth = FirebaseAuth.getInstance();
 
         edit_name = (EditText)findViewById(R.id.edit_name);
         edit_Location = (EditText)findViewById(R.id.edit_Location);
         edit_Time = (EditText)findViewById(R.id.edit_time);
         edit_About = (EditText)findViewById(R.id.edit_about);
+        edit_Cost = (EditText)findViewById(R.id.edit_cost);
+
         enroll = (Button)findViewById(R.id.btn_enroll);
 
         enroll.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +74,10 @@ public class NewMeetingActivity extends AppCompatActivity{
                     Location = edit_Location.getText().toString();
                     Time = edit_Time.getText().toString();
                     About = edit_About.getText().toString();
-                    Host = currentUser.getEmail();
+                    Cost = edit_Cost.getText().toString();
+                    Group = Group_title;
 
-                    writeNewMeeting(Name,Host,Location,Time,About);
+                    writeNewMeeting(Cost,Name,Location,Time,About, Group);
                     finish();
                 }
             }
@@ -73,8 +85,10 @@ public class NewMeetingActivity extends AppCompatActivity{
 
     }
 
-    private void writeNewMeeting(String Name, String Host, String Location, String Time, String About) {
-        MeetingData meetingData = new MeetingData(Host, Location, Time, About);
+    private void writeNewMeeting(String Cost, String Name, String Location, String Time, String About,String Group) {
+        MeetingData meetingData = new MeetingData(Cost, Location, Time, About, Group);
         mDatabaseMeeting.child(Name).setValue(meetingData);
+        mDatabaseUser.child(currentUser.getUid()).child("OrgMeeting").push().setValue(Name);
+        mDatabaseUser.child(currentUser.getUid()).child("JoinedMeeting").push().setValue(Name);
     }
 }

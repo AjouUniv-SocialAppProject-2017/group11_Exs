@@ -5,16 +5,23 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import com.example.taewoong.exchangestudent.Activity.NewGroupActivity;
-import com.example.taewoong.exchangestudent.Activity.NewMeetingActivity;
-import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter;
+import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_group;
+import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_meeting;
 import com.example.taewoong.exchangestudent.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +32,12 @@ import java.util.List;
 
 public class TabFragment1 extends Fragment {
     Button newgroup_btn;
+    private DatabaseReference mMyMeetingReference;
+    private FirebaseAuth mAuth;
+    private ChildEventListener mChildEventListener;
 
-    final int ITEM_SIZE = 5;
+
+    List<item> items;
     public TabFragment1(){
     }
     @Override
@@ -38,34 +49,48 @@ public class TabFragment1 extends Fragment {
     {
         View view = inflater.inflate(R.layout.tab_fragment1,container,false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
+        mAuth = FirebaseAuth.getInstance();
+        mMyMeetingReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("JoinedMeeting");
+        items = new ArrayList<>();
+        mMyMeetingReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot dsp : dataSnapshot.getChildren()){
+                    items.add(new item(R.drawable.a,dsp.getValue(String.class)));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         newgroup_btn = (Button)view.findViewById(R.id.newgroup);
-
-        List<item> items = new ArrayList<>();
-        item[] item = new item[ITEM_SIZE];
-        item[0] = new item(R.drawable.a, "Lag Exchange\n11월 17일-19일");
-        item[1] = new item(R.drawable.b, "Palace tour\n11월 17일(금)");
-        item[2] = new item(R.drawable.c, "DMZ tour\n11월 18일(토)");
-        item[3] = new item(R.drawable.d, "Camping\n11월 20일-26일");
-        item[4] = new item(R.drawable.e, "Tea time\n11월 21일(화)");
-
         newgroup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), NewGroupActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
-        for (int i = 0; i < ITEM_SIZE; i++) {
-            items.add(item[i]);
-        }
 
-        recyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
+        recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        Log.e("Resumed","Resumed!");
+        RecyclerView recyclerView = getView().findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
+        super.onResume();
     }
 }

@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -29,12 +31,14 @@ public class GroupInfoActivity extends AppCompatActivity {
     String About;
     String Genre;
     String Region;
-    private DatabaseReference mGroupReference;
 
     TextView group_name;
     EditText edit_about;
     EditText edit_genre;
     EditText edit_region;
+    Button newMeeting;
+
+    private DatabaseReference mGroupReference;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,16 +53,27 @@ public class GroupInfoActivity extends AppCompatActivity {
         edit_about = (EditText)findViewById(R.id.edit_about);
         edit_genre = (EditText)findViewById(R.id.edit_genre);
         edit_region = (EditText)findViewById(R.id.edit_region);
+        newMeeting = (Button)findViewById(R.id.newMeeting_btn);
 
         Intent intent = getIntent();
         Name = intent.getStringExtra("Group_title");
         group_name.setText(Name);
-        mGroupReference = FirebaseDatabase.getInstance().getReference("groups").child(Name);
 
+        newMeeting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NewMeetingActivity.class);
+                intent.putExtra("Group_title",Name);
+                startActivity(intent);
+            }
+        });
+
+        mGroupReference = FirebaseDatabase.getInstance().getReference("groups").child(Name);
         mGroupReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GroupData groupData = dataSnapshot.getValue(GroupData.class);
+                Log.e("dataSnapshot",dataSnapshot+"");
                 About = groupData.About;
                 Genre = groupData.Genre;
                 Region = groupData.Region;

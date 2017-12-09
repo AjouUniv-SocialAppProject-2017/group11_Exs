@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import com.example.taewoong.exchangestudent.Database.GroupData;
 import com.example.taewoong.exchangestudent.Database.MeetingData;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.database.DataSnapshot;
@@ -24,20 +24,21 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MeetingInfoActivity extends AppCompatActivity{
 
-    String Name;
+    String Meeting_Name;
     String Time;
     String Location;
     String Cost;
     String About;
 
 
-    EditText meeting_name;
+    TextView meeting_name_view;
     EditText meeting_time;
     EditText meeting_location;
     EditText meeting_cost;
     EditText meeting_about;
 
     private DatabaseReference mMeetingReference;
+    private DatabaseReference mGroupReference;
 
 
 
@@ -51,30 +52,48 @@ public class MeetingInfoActivity extends AppCompatActivity{
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        meeting_name = (EditText)findViewById(R.id.nameForm);
+        meeting_name_view = (TextView)findViewById(R.id.name);
         meeting_time = (EditText)findViewById(R.id.timeForm);
         meeting_location = (EditText)findViewById(R.id.locationForm);
         meeting_cost = (EditText)findViewById(R.id.costForm);
         meeting_about = (EditText)findViewById(R.id.aboutForm);
 
-        mMeetingReference = FirebaseDatabase.getInstance().getReference("groups").child("도깨비").child("meetings");
+        Intent intent = getIntent();
+        Meeting_Name = intent.getStringExtra("Meeting_title");
+        meeting_name_view.setText(Meeting_Name);
 
-        mMeetingReference.addValueEventListener(new ValueEventListener() {
+        mGroupReference = FirebaseDatabase.getInstance().getReference("groups");
+        mGroupReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                MeetingData meetingData = dataSnapshot.getValue(MeetingData.class);
-                Name = meetingData.name;
-                Time = meetingData.time;
-                Location = meetingData.location;
-                Cost = meetingData.cost;
-                About = meetingData.about;
-                Log.e("read", Name + " " + Time + " "
-                        + Location + " " + Cost + " " + About + " " );
-                meeting_name.setText(Name);
-                meeting_time.setText(Time);
-                meeting_location.setText(Location);
-                meeting_cost.setText(Cost);
-                meeting_about.setText(About);
+                Log.e("Here","here");
+                for(DataSnapshot dsp: dataSnapshot.getChildren()){
+                    Log.e("dsp",dsp.getKey());
+//                    if(dsp.getKey() == Meeting_Name){
+//                        mMeetingReference = mGroupReference.child(dsp.getKey()).child("meetings").child(Meeting_Name);
+//                        Log.e("dataSnapshot",dsp.getKey()+" "+Meeting_Name);
+//                        mMeetingReference.addValueEventListener(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                MeetingData meetingData = dataSnapshot.getValue(MeetingData.class);
+//                                Time = meetingData.Time;
+//                                Location = meetingData.Location;
+//                                Cost = meetingData.Cost;
+//                                About = meetingData.About;
+//                                meeting_time.setText(Time);
+//                                meeting_location.setText(Location);
+//                                meeting_cost.setText(Cost);
+//                                meeting_about.setText(About);
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(DatabaseError databaseError) {
+//
+//                            }
+//                        });
+//                        break;
+//                    }
+                }
             }
 
             @Override
@@ -82,7 +101,6 @@ public class MeetingInfoActivity extends AppCompatActivity{
 
             }
         });
-
 
     }
 
