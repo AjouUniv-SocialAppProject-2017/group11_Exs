@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.taewoong.exchangestudent.Activity.CategorizedGroupActivityMain;
@@ -41,16 +40,16 @@ public class TabFragment1 extends Fragment {
     RecyclerView recyclerView;
 
 
-    ImageButton test1Btn;
-    ImageButton test2Btn;
-    ImageButton test3Btn;
-    ImageButton test4Btn;
-    ImageButton test5Btn;
-    ImageButton test6Btn;
-    ImageButton test7Btn;
-    ImageButton test8Btn;
-    ImageButton test9Btn;
-    ImageButton test10Btn;
+    ImageView test1Btn;
+    ImageView test2Btn;
+    ImageView test3Btn;
+    ImageView test4Btn;
+    ImageView test5Btn;
+    ImageView test6Btn;
+    ImageView test7Btn;
+    ImageView test8Btn;
+    ImageView test9Btn;
+    ImageView test10Btn;
 
 
 
@@ -125,21 +124,21 @@ public class TabFragment1 extends Fragment {
                 startActivity(intent);
             }
         });
-        test1Btn = (ImageButton)view.findViewById(R.id.imageView);
-        test2Btn = (ImageButton)view.findViewById(R.id.layou);
-        test3Btn = (ImageButton)view.findViewById(R.id.imageView3);
-        test4Btn = (ImageButton)view.findViewById(R.id.imageView7);
-        test5Btn = (ImageButton)view.findViewById(R.id.imageView9);
-        test6Btn = (ImageButton)view.findViewById(R.id.imageView4);
-        test7Btn = (ImageButton)view.findViewById(R.id.imageView5);
-        test8Btn = (ImageButton)view.findViewById(R.id.imageView6);
-        test9Btn = (ImageButton)view.findViewById(R.id.imageView8);
-        test10Btn = (ImageButton)view.findViewById(R.id.imageView10);
+        test1Btn = (ImageView)view.findViewById(R.id.imageView);
+        test2Btn = (ImageView)view.findViewById(R.id.layou);
+        test3Btn = (ImageView)view.findViewById(R.id.imageView3);
+        test4Btn = (ImageView)view.findViewById(R.id.imageView7);
+        test5Btn = (ImageView)view.findViewById(R.id.imageView9);
+        test6Btn = (ImageView)view.findViewById(R.id.imageView4);
+        test7Btn = (ImageView)view.findViewById(R.id.imageView5);
+        test8Btn = (ImageView)view.findViewById(R.id.imageView6);
+        test9Btn = (ImageView)view.findViewById(R.id.imageView8);
+        test10Btn = (ImageView)view.findViewById(R.id.imageView10);
         test1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreCook","Cook");
+                intent.putExtra("Genre","Cook");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -149,7 +148,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreReligion","Religion");
+                intent.putExtra("Genre","Religion");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -159,7 +158,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreMovie","Movie");
+                intent.putExtra("Genre","Movie");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -169,7 +168,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreTrip","Trip");
+                intent.putExtra("Genre","Trip");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -179,7 +178,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genrePet","pet");
+                intent.putExtra("Genre","pet");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -189,7 +188,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreMusic","Music");
+                intent.putExtra("Genre","Music");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -199,7 +198,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreFood","Food");
+                intent.putExtra("Genre","Food");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -209,7 +208,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreWorkout","WorkOut");
+                intent.putExtra("Genre","WorkOut");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -219,7 +218,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreArt","Art");
+                intent.putExtra("Genre","Art");
 
                 startActivity(intent);
                 getActivity().finish();
@@ -229,7 +228,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreEtc","Etc");
+                intent.putExtra("Genre","Etc");
 
                 startActivity(intent);
                 getActivity().finish();
