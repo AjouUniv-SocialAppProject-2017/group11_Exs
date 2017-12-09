@@ -38,6 +38,7 @@ public class TabFragment1 extends Fragment {
     private DatabaseReference mMyMeetingReference;
     private FirebaseAuth mAuth;
     private ChildEventListener mChildEventListener;
+    RecyclerView recyclerView;
 
 
     ImageButton test1Btn;
@@ -57,7 +58,7 @@ public class TabFragment1 extends Fragment {
     {
         View view = inflater.inflate(R.layout.tab_fragment1,container,false);
 
-        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
@@ -85,7 +86,6 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), NewGroupActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test1Btn = (ImageButton)view.findViewById(R.id.imageView);
@@ -110,4 +110,13 @@ public class TabFragment1 extends Fragment {
         recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
         super.onResume();
     }
+
+    @Override
+    public void onStart() {
+        Log.e("onStart","Start!");
+        RecyclerView recyclerView = getView().findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
+        super.onStart();
+    }
+
 }

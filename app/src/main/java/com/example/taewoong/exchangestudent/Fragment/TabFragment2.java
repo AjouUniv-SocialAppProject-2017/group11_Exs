@@ -32,6 +32,8 @@ public class TabFragment2 extends Fragment{
     private FirebaseAuth mAuth;
     List<item> items1;
     List<item> items2;
+    RecyclerView recyclerView1;
+    RecyclerView recyclerView2;
     public TabFragment2(){
 
     }
@@ -54,7 +56,7 @@ public class TabFragment2 extends Fragment{
 
 
         //첫번째 cardView
-        RecyclerView recyclerView1 = view.findViewById(R.id.recyclerView1);
+        recyclerView1 = view.findViewById(R.id.recyclerView1);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(layoutManager1);
@@ -78,7 +80,7 @@ public class TabFragment2 extends Fragment{
         recyclerView1.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1));
 
         //두번째 cardView
-        RecyclerView recyclerView2 = view.findViewById(R.id.recyclerView2);
+        recyclerView2 = view.findViewById(R.id.recyclerView2);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity().getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(layoutManager2);
@@ -99,7 +101,14 @@ public class TabFragment2 extends Fragment{
         });
 
         recyclerView2.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
-
         return view;
     }
+
+    @Override
+    public void onStart() {
+        recyclerView2.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
+        recyclerView1.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1));
+        super.onStart();
+    }
+
 }

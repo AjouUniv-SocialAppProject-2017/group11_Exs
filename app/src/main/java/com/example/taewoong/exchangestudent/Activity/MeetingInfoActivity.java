@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.acl.Group;
+
 /**
  * Created by Taewoong on 2017-11-17.
  */
@@ -25,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MeetingInfoActivity extends AppCompatActivity{
 
     String Meeting_Name;
+    String Group_Name;
     String Time;
     String Location;
     String Cost;
@@ -38,9 +41,6 @@ public class MeetingInfoActivity extends AppCompatActivity{
     EditText meeting_about;
 
     private DatabaseReference mMeetingReference;
-    private DatabaseReference mGroupReference;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,40 +60,25 @@ public class MeetingInfoActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         Meeting_Name = intent.getStringExtra("Meeting_title");
-        meeting_name_view.setText(Meeting_Name);
+        Group_Name = intent.getStringExtra("Group_title");
+        meeting_name_view.setText(Meeting_Name + '(' + Group_Name +')');
 
-        mGroupReference = FirebaseDatabase.getInstance().getReference("groups");
-        mGroupReference.addValueEventListener(new ValueEventListener() {
+        mMeetingReference = FirebaseDatabase.getInstance().getReference("groups").child(Group_Name).child("meetings").child(Meeting_Name+'('+Group_Name+')');
+        Log.e("abdfs",Group_Name+"/"+Meeting_Name);
+
+        mMeetingReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e("Here","here");
-                for(DataSnapshot dsp: dataSnapshot.getChildren()){
-                    Log.e("dsp",dsp.getKey());
-//                    if(dsp.getKey() == Meeting_Name){
-//                        mMeetingReference = mGroupReference.child(dsp.getKey()).child("meetings").child(Meeting_Name);
-//                        Log.e("dataSnapshot",dsp.getKey()+" "+Meeting_Name);
-//                        mMeetingReference.addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(DataSnapshot dataSnapshot) {
-//                                MeetingData meetingData = dataSnapshot.getValue(MeetingData.class);
-//                                Time = meetingData.Time;
-//                                Location = meetingData.Location;
-//                                Cost = meetingData.Cost;
-//                                About = meetingData.About;
-//                                meeting_time.setText(Time);
-//                                meeting_location.setText(Location);
-//                                meeting_cost.setText(Cost);
-//                                meeting_about.setText(About);
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(DatabaseError databaseError) {
-//
-//                            }
-//                        });
-//                        break;
-//                    }
-                }
+                Log.e("dataSnapshot",dataSnapshot.getValue()+"");
+                MeetingData meetingData = dataSnapshot.getValue(MeetingData.class);
+                Time = meetingData.Time;
+                Location = meetingData.Location;
+                Cost = meetingData.Cost;
+                About = meetingData.About;
+                meeting_time.setText(Time);
+                meeting_location.setText(Location);
+                meeting_cost.setText(Cost);
+                meeting_about.setText(About);
             }
 
             @Override

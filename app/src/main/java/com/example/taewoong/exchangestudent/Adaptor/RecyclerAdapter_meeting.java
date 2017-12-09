@@ -50,8 +50,18 @@ public class RecyclerAdapter_meeting extends RecyclerView.Adapter<RecyclerAdapte
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String group;
+                String meeting;
+                int start;
+                int end;
+                start = item.getTitle().indexOf('(');
+                end = item.getTitle().indexOf(')');
+                group = item.getTitle().substring(start+1,end);
+                meeting = item.getTitle().substring(0,start-1);
+                Log.e("group",group);
                 Intent intent = new Intent(context, MeetingInfoActivity.class);
-                intent.putExtra("Meeting_title",item.getTitle());
+                intent.putExtra("Meeting_title",meeting);
+                intent.putExtra("Group_title",group);
                 context.startActivity(intent);
             }
         });

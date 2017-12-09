@@ -76,7 +76,6 @@ public class NewMeetingActivity extends AppCompatActivity{
                     About = edit_About.getText().toString();
                     Cost = edit_Cost.getText().toString();
                     Group = Group_title;
-
                     writeNewMeeting(Cost,Name,Location,Time,About, Group);
                     finish();
                 }
@@ -87,8 +86,8 @@ public class NewMeetingActivity extends AppCompatActivity{
 
     private void writeNewMeeting(String Cost, String Name, String Location, String Time, String About,String Group) {
         MeetingData meetingData = new MeetingData(Cost, Location, Time, About, Group);
-        mDatabaseMeeting.child(Name).setValue(meetingData);
-        mDatabaseUser.child(currentUser.getUid()).child("OrgMeeting").push().setValue(Name);
-        mDatabaseUser.child(currentUser.getUid()).child("JoinedMeeting").push().setValue(Name);
+        mDatabaseMeeting.child(Name+'('+Group+')').setValue(meetingData);
+        mDatabaseUser.child(currentUser.getUid()).child("OrgMeeting").push().setValue(Name+"\n("+Group+")");
+        mDatabaseUser.child(currentUser.getUid()).child("JoinedMeeting").push().setValue(Name+"\n("+Group+")");
     }
 }
