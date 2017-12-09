@@ -42,6 +42,18 @@ public class TabFragment1 extends Fragment {
 
 
     ImageButton test1Btn;
+    ImageButton test2Btn;
+    ImageButton test3Btn;
+    ImageButton test4Btn;
+    ImageButton test5Btn;
+    ImageButton test6Btn;
+    ImageButton test7Btn;
+    ImageButton test8Btn;
+    ImageButton test9Btn;
+    ImageButton test10Btn;
+
+
+
 
 
 
@@ -114,16 +126,116 @@ public class TabFragment1 extends Fragment {
             }
         });
         test1Btn = (ImageButton)view.findViewById(R.id.imageView);
+        test2Btn = (ImageButton)view.findViewById(R.id.layou);
+        test3Btn = (ImageButton)view.findViewById(R.id.imageView3);
+        test4Btn = (ImageButton)view.findViewById(R.id.imageView7);
+        test5Btn = (ImageButton)view.findViewById(R.id.imageView9);
+        test6Btn = (ImageButton)view.findViewById(R.id.imageView4);
+        test7Btn = (ImageButton)view.findViewById(R.id.imageView5);
+        test8Btn = (ImageButton)view.findViewById(R.id.imageView6);
+        test9Btn = (ImageButton)view.findViewById(R.id.imageView8);
+        test10Btn = (ImageButton)view.findViewById(R.id.imageView10);
         test1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("genreCook","cook");
+                intent.putExtra("genreCook","Cook");
 
                 startActivity(intent);
                 getActivity().finish();
             }
         });
+        test2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreReligion","Religion");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test3Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreMovie","Movie");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test4Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreTrip","Trip");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test5Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genrePet","pet");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test6Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreMusic","Music");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test7Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreFood","Food");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test8Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreWorkout","WorkOut");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test9Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreArt","Art");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test10Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
+                intent.putExtra("genreEtc","Etc");
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
 
 
         recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
