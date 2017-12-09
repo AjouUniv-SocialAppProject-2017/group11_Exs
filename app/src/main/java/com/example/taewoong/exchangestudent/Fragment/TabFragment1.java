@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import com.example.taewoong.exchangestudent.Activity.CategorizedGroupActivityMain;
 import com.example.taewoong.exchangestudent.Activity.NewGroupActivity;
 import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_group;
 import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_meeting;
@@ -35,6 +38,11 @@ public class TabFragment1 extends Fragment {
     private DatabaseReference mMyMeetingReference;
     private FirebaseAuth mAuth;
     private ChildEventListener mChildEventListener;
+
+
+    ImageButton test1Btn;
+
+
 
 
     List<item> items;
@@ -76,6 +84,15 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), NewGroupActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+        test1Btn = (ImageButton)view.findViewById(R.id.imageView);
+        test1Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 startActivity(intent);
                 getActivity().finish();
             }

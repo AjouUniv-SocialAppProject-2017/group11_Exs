@@ -63,7 +63,7 @@
         android:layout_marginLeft="5dp"
         android:layout_below="@+id/textView13">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageView"
             android:layout_width="60dp"
             android:layout_height="60dp"

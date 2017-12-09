@@ -119,27 +119,27 @@
             android:inputType="date" />
 
 
-        <TextView
-            android:id="@+id/about"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/costForm"
-            android:layout_below="@+id/costForm"
-            android:layout_marginTop="8dp"
-            android:text="About"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/costForm"
+        android:layout_below="@+id/costForm"
+        android:layout_marginTop="8dp"
+        android:text="About"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
 
-        <EditText
-            android:id="@+id/aboutForm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/about"
-            android:layout_below="@+id/about"
-            android:layout_toStartOf="@+id/imageButton"
-            android:ems="10"
-            android:inputType="date" />
+    <EditText
+        android:id="@+id/aboutForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/about"
+        android:layout_below="@+id/about"
+        android:layout_toStartOf="@+id/imageButton"
+        android:ems="10"
+        android:inputType="date" />
 
         <TextView
             android:id="@+id/member"
