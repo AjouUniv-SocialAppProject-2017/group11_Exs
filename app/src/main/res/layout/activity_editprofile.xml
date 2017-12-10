@@ -33,7 +33,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="59dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/robinseok" />
+         />
 
     <Button
         android:id="@+id/button5"

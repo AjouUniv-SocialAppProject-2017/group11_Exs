@@ -14,7 +14,7 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="61dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/robinseok" />
+         />
 
     <TextView
         android:id="@+id/textView16"
