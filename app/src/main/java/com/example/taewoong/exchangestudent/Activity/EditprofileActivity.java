@@ -101,13 +101,7 @@ public class EditprofileActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "이미지를 선택하세요."), 0);
             }
         });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                uploadFile();
 
-            }
-        });
 
 
         Intent intent = getIntent();
@@ -121,6 +115,7 @@ public class EditprofileActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                uploadFile();
                 if (editName.getText().toString().equals("")) {
                     Toast.makeText(EditprofileActivity.this, "Plz fill in blank", Toast.LENGTH_LONG).show();
                 } else if (editName.getText().toString().equals(defaultName)) {
@@ -174,7 +169,7 @@ public class EditprofileActivity extends AppCompatActivity {
             String filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com").child("images/" + filename);
-            //올라가거라...
+            //올라가거라..."gs://lte-ajou.appspot.com"
             storageRef.putFile(filePath)
                     //성공시
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
