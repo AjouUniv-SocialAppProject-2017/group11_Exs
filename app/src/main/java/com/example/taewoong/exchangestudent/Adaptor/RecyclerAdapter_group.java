@@ -56,6 +56,10 @@ public class RecyclerAdapter_group extends RecyclerView.Adapter<RecyclerAdapter_
         });
     }
 
+    public void refresh(){
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return this.items.size();
@@ -72,4 +76,5 @@ public class RecyclerAdapter_group extends RecyclerView.Adapter<RecyclerAdapter_
             cardview = itemView.findViewById(R.id.cardview);
         }
     }
+
 }

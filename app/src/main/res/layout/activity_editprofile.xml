@@ -53,8 +53,7 @@
         android:layout_below="@+id/imageView11"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName"/>
 
     <TextView
         android:id="@+id/textView25"

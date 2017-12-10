@@ -1,5 +1,6 @@
 package com.example.taewoong.exchangestudent.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.nfc.Tag;
@@ -60,10 +61,11 @@ public class EditprofileActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         defaultName = intent.getStringExtra("nameForm");
-
+        editName.setText(defaultName);
         mDatabaseReferenceName = FirebaseDatabase.getInstance().getReference("users");
 
         mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +75,7 @@ public class EditprofileActivity extends AppCompatActivity {
                 }else if(editName.getText().toString().equals(defaultName)){
                     Toast.makeText(EditprofileActivity.this, "Plz fill the new Name", Toast.LENGTH_LONG).show();
                 }else{
+                    name = editName.getText().toString();
                     updateName(name);
                 }
             }
@@ -80,10 +83,11 @@ public class EditprofileActivity extends AppCompatActivity {
     }
 
         private void updateName(String newName){
-
-            mDatabaseReferenceName.child(currentUser.getUid()).child("Name").setValue(name);
+            mDatabaseReferenceName.child(currentUser.getUid()).child("Name").setValue(newName);
+            Intent intent = new Intent();
+            intent.putExtra("Name",newName);
+            setResult(Activity.RESULT_OK,intent);
             finish();
     }
-
-    }
+}
 

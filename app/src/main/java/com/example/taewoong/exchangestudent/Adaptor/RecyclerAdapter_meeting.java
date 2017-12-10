@@ -67,6 +67,10 @@ public class RecyclerAdapter_meeting extends RecyclerView.Adapter<RecyclerAdapte
         });
     }
 
+    public void refresh(){
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return this.items.size();

@@ -67,6 +67,7 @@ public class TabFragment2 extends Fragment{
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 items1.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+                recyclerView1.getAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -116,6 +117,7 @@ public class TabFragment2 extends Fragment{
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 items2.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+                recyclerView2.getAdapter().notifyDataSetChanged();
             }
 
             @Override

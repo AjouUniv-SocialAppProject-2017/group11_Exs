@@ -51,12 +51,6 @@ public class TabFragment1 extends Fragment {
     ImageView test9Btn;
     ImageView test10Btn;
 
-
-
-
-
-
-
     List<item> items;
     public TabFragment1(){
     }
@@ -82,6 +76,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 items.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+                recyclerView.getAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -219,7 +214,6 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Art");
-
                 startActivity(intent);
                 getActivity().finish();
             }
@@ -229,32 +223,12 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Etc");
-
                 startActivity(intent);
                 getActivity().finish();
             }
         });
 
-
-
         recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
         return view;
     }
-
-    @Override
-    public void onResume() {
-        Log.e("Resumed","Resumed!");
-        RecyclerView recyclerView = getView().findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
-        super.onResume();
-    }
-
-    @Override
-    public void onStart() {
-        Log.e("onStart","Start!");
-        RecyclerView recyclerView = getView().findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
-        super.onStart();
-    }
-
 }

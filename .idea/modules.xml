@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ExchangeStudent.iml" filepath="$PROJECT_DIR$/ExchangeStudent.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/group11_Exs.iml" filepath="$PROJECT_DIR$/group11_Exs.iml" />
       <module fileurl="file://C:\AndroidStudioProjects\ExchangeStudent\group11_Exs.iml" filepath="C:\AndroidStudioProjects\ExchangeStudent\group11_Exs.iml" />
     </modules>
   </component>

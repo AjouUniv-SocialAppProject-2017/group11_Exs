@@ -5,6 +5,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -12,6 +14,7 @@ import android.widget.Toolbar;
 import com.example.taewoong.exchangestudent.Adaptor.MyAdapter;
 import com.example.taewoong.exchangestudent.Database.GenreData;
 import com.example.taewoong.exchangestudent.Database.GroupData;
+import com.example.taewoong.exchangestudent.Database.MyItem;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -86,9 +89,9 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
                             Group_Genre = groupData.Genre;
                             Group_About = groupData.About;
                             if(Group_Genre.equals(Genre)){
-                                Log.e("Here","Here");
                                 mMyAdapter.addItem(ContextCompat.getDrawable(getApplicationContext(), R.drawable.icon),dsp.getValue().toString(),Group_About);
                             }
+                            mMyAdapter.notifyDataSetChanged();
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
@@ -122,6 +125,26 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
 
         /* 리스트뷰에 어댑터 등록 */
         mListView.setAdapter(mMyAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final MyItem myItem = (MyItem)adapterView.getItemAtPosition(i);
+                mDatabaseGroupReference.child(myItem.getName()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Intent intent = new Intent(getApplicationContext(), GroupInfoActivity.class);
+                        intent.putExtra("Group_title",myItem.getName());
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
     }
 
 }

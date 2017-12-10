@@ -8,9 +8,6 @@ import java.util.ArrayList;
 
 public class UserData {
     public String userEmail;
-    public String userEmailID; // email 주소에서 @ 이전까지의 값.
-    public ArrayList<String> Interest;
-    public ArrayList<String> Joined_meeting;
     public String UID;
     public String userName;
     public String picUrl;
@@ -22,11 +19,11 @@ public class UserData {
 
     }
     public UserData(String userName){
-        this.userName = userName;
+        this.userEmail = userName;
     }
 
-    public UserData(String userName, String picUrl){
-        this.userName = userName;
+    public UserData(String userEmail, String picUrl){
+        this.userEmail = userName;
         this.picUrl = picUrl;
     }
 
