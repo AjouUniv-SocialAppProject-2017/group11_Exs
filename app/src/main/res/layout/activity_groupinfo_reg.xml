@@ -131,52 +131,61 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/edit_about"
             android:layout_below="@+id/edit_about"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="11dp"
             android:text="Attending Member"
             android:textColor="@android:color/black"
             android:textSize="17dp"
             android:textStyle="bold" />
 
         <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/attendMemberForm"
+            android:id="@+id/scrollView2"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/attendMemberForm"
+            android:layout_marginRight="50dp"
             android:background="@drawable/border"
-            android:id="@+id/scrollView2">
+            android:layout_alignStart="@+id/attendMemberForm"
+            android:fillViewport="true">
 
             <ListView
                 android:id="@+id/memberlist"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content">
-            </ListView>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
         </ScrollView>
 
         <TextView
             android:id="@+id/MeetingListTxv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_alignLeft="@+id/scrollView2"
+            android:layout_alignStart="@+id/attendMemberForm"
+            android:layout_below="@+id/scrollView2"
+            android:layout_marginTop="17dp"
             android:text="Meeting List"
             android:textColor="@android:color/black"
             android:textSize="17dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/scrollView2"/>
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_alignStart="@+id/MeetingListTxv"
             android:layout_below="@+id/MeetingListTxv"
             android:background="@drawable/border"
-            android:id="@+id/scrollView3">
+            android:id="@+id/scrollView3"
+            android:layout_marginRight="50dp"
+            android:fillViewport="true"
+            android:layout_marginBottom="30dp">
 
             <ListView
                 android:id="@+id/MeetingList"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content">
-            </ListView>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignEnd="@+id/scrollView2"
+                android:layout_alignParentBottom="true"></ListView>
+
         </ScrollView>
+
+
     </RelativeLayout>
 </ScrollView>

@@ -77,29 +77,26 @@ public class TabFragment3 extends Fragment{
         currentUser = mAuth.getCurrentUser();
 
         storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com/").child("images");
 
-        mProfilePicture = FirebaseDatabase.getInstance().getReference("users").child("profileUrl");
+        mProfilePicture = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid()).child("profileUrl");
         mProfilePicture.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                  profilePictureName = dataSnapshot.getValue().toString();
-
-
+                storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com/").child("images");
+                Glide.with(getContext() /* context */)
+                        .using(new FirebaseImageLoader())
+                        .load(storageRef.child(profilePictureName))
+                        .into(profile_image);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        })            ;
+        });
 
-        Log.e("storageRef",storageRef+"");
 
-        Glide.with(this /* context */)
-                .using(new FirebaseImageLoader())
-                .load(storageRef.child(profilePictureName))
-                .into(profile_image);
 
         mEditProfileReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid()).child("Name");
         mEditProfileReference.addValueEventListener(new ValueEventListener() {

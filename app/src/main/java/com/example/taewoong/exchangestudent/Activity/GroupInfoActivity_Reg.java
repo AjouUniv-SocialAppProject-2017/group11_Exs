@@ -3,7 +3,6 @@ package com.example.taewoong.exchangestudent.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,21 +14,23 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.taewoong.exchangestudent.Adaptor.MyAdapter;
 import com.example.taewoong.exchangestudent.Database.GroupData;
 import com.example.taewoong.exchangestudent.R;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 /**
  * Created by Taewoong on 2017-12-06.
  */
 
 public class GroupInfoActivity_Reg extends AppCompatActivity {
+    static final ArrayList<String> List_member = new ArrayList<String>();
+    static final ArrayList<String> List_Meeting = new ArrayList<String>();
 
     public String Name;
     public String About;
@@ -43,9 +44,11 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
     EditText edit_region;
     Button newMeeting;
 
-    public ListView mListView;
+    public ListView mListView_Member;
+    public ListView mListView_Meeting;
     ArrayAdapter<String> adapter;
     private DatabaseReference mDatabaseMemberReference;
+    private DatabaseReference mDatabaseMeetingReference;
 
     private DatabaseReference mGroupReference;
 
@@ -68,8 +71,10 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
         Name = intent.getStringExtra("Group_title");
         group_name.setText(Name);
 
-        mListView = (ListView)findViewById(R.id.listView);
-        dataSetting(Name, mListView);
+        mListView_Member = (ListView)findViewById(R.id.memberlist);
+        mListView_Meeting = (ListView)findViewById(R.id.MeetingList);
+        dataSetting_Member(Name, mListView_Member);
+        dataSetting_Meeting(Name, mListView_Meeting);
 
         newMeeting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,13 +110,13 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
 
     }
 
-    private void dataSetting(String name, ListView mListView) {
+    private void dataSetting_Member(String name, ListView mListView) {
         mDatabaseMemberReference = FirebaseDatabase.getInstance().getReference("groups").child(name).child("Member");
         mDatabaseMemberReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot dsp:dataSnapshot.getChildren()){
-                    Log.e("dsp",dsp.getValue()+"");
+                    List_member.add(dsp.getValue().toString());
                 }
             }
 
@@ -120,8 +125,27 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
 
             }
         });
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, List_member) ;
+        mListView.setAdapter(adapter);
+    }
 
-        //mListView.setAdapter();
+    private void dataSetting_Meeting(String name, ListView mListView){
+        mDatabaseMeetingReference = FirebaseDatabase.getInstance().getReference("groups").child(name).child("meetings");
+        mDatabaseMeetingReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot dsp:dataSnapshot.getChildren()){
+                    String Meeting_name = dsp.getKey().split("\\(")[0];
+                    List_Meeting.add(Meeting_name);
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, List_Meeting) ;
+        mListView.setAdapter(adapter);
     }
 }
