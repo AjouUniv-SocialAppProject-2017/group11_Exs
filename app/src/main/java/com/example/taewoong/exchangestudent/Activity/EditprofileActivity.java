@@ -33,17 +33,17 @@ import com.google.firebase.database.FirebaseDatabase;
 public class EditprofileActivity extends AppCompatActivity {
 
     String name;
-    String myName;
+    String defaultName;
 
     EditText editName;
     Button editPicture;
     Button editInterest;
     Button save;
 
+    private DatabaseReference mDatabaseReferenceName;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
-    private DatabaseReference mDatabaseUserName;
-    private DatabaseReference mDatabaseUserPicture;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,27 +55,25 @@ public class EditprofileActivity extends AppCompatActivity {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        editName = (EditText) findViewById(R.id.editText9);
-        Intent intent = getIntent();
-        name = intent.getStringExtra("myName");
-        editName.setHint(name);
+        save = (Button)findViewById(R.id.button2);
+        editName = (EditText)findViewById(R.id.editText9);
 
+        Intent intent = getIntent();
+        defaultName = intent.getStringExtra("nameForm");
+
+        mDatabaseReferenceName = FirebaseDatabase.getInstance().getReference("users");
 
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        mDatabaseUserName = FirebaseDatabase.getInstance().getReference("users");
-
-
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editName.getText().toString().equals("")) {
-                    Toast.makeText(EditprofileActivity.this, "Please Fill out Your Name", Toast.LENGTH_LONG).show();
-                } else if (editName.getText().toString().equals(name)) {
-                    Toast.makeText(EditprofileActivity.this, "Please Update Your Name", Toast.LENGTH_LONG).show();
-                } else {
-                    updateName(editName.getText().toString());
+                if(editName.getText().toString().equals("")){
+                    Toast.makeText(EditprofileActivity.this, "Plz fill in blank", Toast.LENGTH_LONG).show();
+                }else if(editName.getText().toString().equals(defaultName)){
+                    Toast.makeText(EditprofileActivity.this, "Plz fill the new Name", Toast.LENGTH_LONG).show();
+                }else{
+                    updateName(name);
                 }
             }
         });
@@ -83,9 +81,8 @@ public class EditprofileActivity extends AppCompatActivity {
 
         private void updateName(String newName){
 
-            UserData userData = new UserData(newName);
-            mDatabaseUserName.child(currentUser.getUid()).child("Name").setValue(myName);
-
+            mDatabaseReferenceName.child(currentUser.getUid()).child("Name").setValue(name);
+            finish();
     }
 
     }

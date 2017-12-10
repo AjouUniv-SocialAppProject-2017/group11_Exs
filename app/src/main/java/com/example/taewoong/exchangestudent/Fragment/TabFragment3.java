@@ -20,8 +20,8 @@ import com.example.taewoong.exchangestudent.R;
 public class TabFragment3 extends Fragment{
 
     Button editprofile;
-    TextView Txv_name;
-    String name;
+    TextView defaultName;
+    String nameForm;
 
     public TabFragment3(){
 
@@ -36,16 +36,16 @@ public class TabFragment3 extends Fragment{
     {
         View view = inflater.inflate(R.layout.tab_fragment3,container,false);
         editprofile = (Button)view.findViewById(R.id.editprofile);
-        Txv_name = (TextView)view.findViewById(R.id.textView16);
+        defaultName = (TextView)view.findViewById(R.id.textView16);
         /*name = Txv_name.getText().toString();
            */
-        Txv_name.setHint("이름을 입력해주세요.");
-        name =Txv_name.getText().toString();
+        defaultName.setHint("이름을 입력해주세요.");
+        nameForm =defaultName.getText().toString();
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), EditprofileActivity.class);
-                intent.putExtra("myName",name);
+                intent.putExtra("myName",nameForm);
                 startActivity(intent);
             }
 
