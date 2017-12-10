@@ -70,6 +70,7 @@ public class TabFragment3 extends Fragment{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 name = dataSnapshot.getValue().toString();
                 defaultName.setText(name);
+
             }
 
             @Override
