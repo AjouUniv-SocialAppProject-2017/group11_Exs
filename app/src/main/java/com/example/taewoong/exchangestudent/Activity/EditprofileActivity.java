@@ -83,11 +83,10 @@ public class EditprofileActivity extends AppCompatActivity {
     }
 
         private void updateName(String newName){
-            mDatabaseReferenceName.child(currentUser.getUid()).child("Name").setValue(newName);
-            Intent intent = new Intent();
-            intent.putExtra("Name",newName);
-            setResult(Activity.RESULT_OK,intent);
+
+            mDatabaseReferenceName.child(currentUser.getUid()).child("Name").setValue(name);
             finish();
     }
-}
+
+    }
 

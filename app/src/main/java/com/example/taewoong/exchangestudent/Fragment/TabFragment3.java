@@ -13,11 +13,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.taewoong.exchangestudent.Activity.EditprofileActivity;
+import com.example.taewoong.exchangestudent.Database.UserData;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Taewoong on 2017-11-17.
@@ -31,7 +35,9 @@ public class TabFragment3 extends Fragment{
     String name;
     int REQUEST_ACT = 1;
 
+
     private DatabaseReference mDatabaseUserName;
+    private DatabaseReference mEditProfileReference;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
@@ -45,6 +51,8 @@ public class TabFragment3 extends Fragment{
         super.onCreate(savedInstanceState);
 
     }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -56,9 +64,25 @@ public class TabFragment3 extends Fragment{
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
+        mEditProfileReference = FirebaseDatabase.getInstance().getReference("users").child("name");
+        mEditProfileReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserData userData = dataSnapshot.getValue(UserData.class);
+                name=userData.userName;
+                defaultName.setText(name);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         defaultName.setHint("이름을 입력해주세요.");
         nameForm =defaultName.getText().toString();
+        defaultName.setText(mDatabaseUserName.child(currentUser.getUid()).child("Name").toString());
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
