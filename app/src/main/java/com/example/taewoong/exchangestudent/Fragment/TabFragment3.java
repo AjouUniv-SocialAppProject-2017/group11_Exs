@@ -64,14 +64,12 @@ public class TabFragment3 extends Fragment{
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
-        mEditProfileReference = FirebaseDatabase.getInstance().getReference("users").child("name");
+        mEditProfileReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid()).child("Name");
         mEditProfileReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                UserData userData = dataSnapshot.getValue(UserData.class);
-                name=userData.userName;
+                name = dataSnapshot.getValue().toString();
                 defaultName.setText(name);
-
             }
 
             @Override
