@@ -57,6 +57,7 @@ public class EditprofileActivity extends AppCompatActivity {
 
     String name;
     String defaultName;
+    String profilePictureUrl;
 
     EditText editName;
     ImageView picture;
@@ -65,6 +66,7 @@ public class EditprofileActivity extends AppCompatActivity {
     Button save;
 
     private DatabaseReference mDatabaseReferenceName;
+    private DatabaseReference mDatabaseReferencePic;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
@@ -158,7 +160,7 @@ public class EditprofileActivity extends AppCompatActivity {
             //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
-            String filename = formatter.format(now) + ".png";
+            final String filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com").child("images/" + filename);
             //올라가거라..."gs://lte-ajou.appspot.com"
@@ -168,6 +170,8 @@ public class EditprofileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
+                            mDatabaseReferencePic = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid()).child("profileUrl");
+                            mDatabaseReferencePic.setValue(filename);
                         }
                     })
                     //실패시
