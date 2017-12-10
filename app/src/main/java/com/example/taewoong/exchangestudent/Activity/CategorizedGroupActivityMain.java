@@ -27,9 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CategorizedGroupActivityMain extends AppCompatActivity {
 
-
-    MyAdapter mMyAdapter = new MyAdapter();
-
     private ListView mListView;
 
     String Genre;
@@ -39,7 +36,6 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
     String Group_Region;
     String Group_Genre;
     String Group_About;
-
 
     private DatabaseReference mDatabaseGenreReference;
     private DatabaseReference mDatabaseGroupReference;
@@ -94,7 +90,6 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
                     });
                 }
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
@@ -116,7 +111,6 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
             }
         });
 
-
         /* 리스트뷰에 어댑터 등록 */
         mListView.setAdapter(mMyAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -130,13 +124,11 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
                         intent.putExtra("Group_title",myItem.getName());
                         startActivity(intent);
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
-
             }
         });
     }

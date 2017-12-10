@@ -32,6 +32,7 @@ public class GroupInfoActivity_Unreg extends AppCompatActivity {
     String About;
     String Genre;
     String Region;
+    String userName;
 
     TextView group_name;
     EditText edit_about;
@@ -90,8 +91,19 @@ public class GroupInfoActivity_Unreg extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mDatabaseUser.child(currentUser.getUid()).child("JoinedGroup").push().setValue(Name);
-                String userName;
-                mGroupReference = FirebaseDatabase.getInstance().getReference("groups").child("Member");
+                mDatabaseUser.child(currentUser.getUid()).child("Name").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        userName = dataSnapshot.getValue().toString();
+                        FirebaseDatabase.getInstance().getReference("groups").child(Name).child("Member").push().setValue(userName);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
                 finish();
             }
         });

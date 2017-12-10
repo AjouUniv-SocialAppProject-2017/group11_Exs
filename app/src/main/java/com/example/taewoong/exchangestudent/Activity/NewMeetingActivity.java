@@ -26,11 +26,11 @@ import com.google.firebase.database.FirebaseDatabase;
 public class NewMeetingActivity extends AppCompatActivity{
     private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
     EditText edit_name;
-    EditText edit_Location;
     EditText edit_Time;
     EditText edit_About;
     EditText edit_Cost;
     EditText edit_address;
+    EditText edit_address_extra;
     ImageButton Search_address_btn;
     Button enroll;
     String Name, Location, Time, About, Cost, Group;
@@ -64,6 +64,7 @@ public class NewMeetingActivity extends AppCompatActivity{
         edit_About = (EditText)findViewById(R.id.edit_about);
         edit_Cost = (EditText)findViewById(R.id.edit_cost);
         edit_address = (EditText)findViewById(R.id.address_result) ;
+        edit_address_extra = (EditText)findViewById(R.id.extra_address);
         unfocusable(edit_address);
         Search_address_btn = (ImageButton)findViewById(R.id.search_address_btn);
 
@@ -72,12 +73,12 @@ public class NewMeetingActivity extends AppCompatActivity{
         enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edit_name.getText().toString().equals("")||edit_Location.getText().toString().equals("")||edit_Time.getText().toString().equals("")||edit_About.getText().toString().equals("")){
+                if(edit_name.getText().toString().equals("")||edit_address_extra.getText().toString().equals("")||edit_Time.getText().toString().equals("")||edit_About.getText().toString().equals("")){
                     Toast.makeText(NewMeetingActivity.this, "Plz fill in all the blanks", Toast.LENGTH_LONG).show();
                 }else{
                     currentUser = mAuth.getCurrentUser();
                     Name = edit_name.getText().toString();
-                    Location = edit_Location.getText().toString();
+                    Location = edit_address.getText().toString() + " "+ edit_address_extra.getText().toString();
                     Time = edit_Time.getText().toString();
                     About = edit_About.getText().toString();
                     Cost = edit_Cost.getText().toString();
