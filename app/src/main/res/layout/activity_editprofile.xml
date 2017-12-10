@@ -42,7 +42,7 @@
         android:layout_alignBottom="@+id/imageView11"
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@+id/imageView11"
-        android:background="@drawable/border"
+        android:background="@drawable/box"
         android:text="Edit Picture" />
 
     <EditText
@@ -73,7 +73,7 @@
         android:layout_height="20sp"
         android:layout_alignBottom="@+id/textView25"
         android:layout_alignStart="@+id/button5"
-        android:background="@drawable/border"
+        android:background="@drawable/box"
         android:text="Edit interest"
         android:textSize="10sp" />
 
@@ -140,6 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView31"
         android:layout_toEndOf="@+id/button5"
+        android:background="@drawable/box"
         android:text="save" />
 
 

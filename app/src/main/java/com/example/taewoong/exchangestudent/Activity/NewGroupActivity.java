@@ -26,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class NewGroupActivity extends AppCompatActivity {
-
     private DatabaseReference mDatabaseMeeting;
     private DatabaseReference mDatabaseUser;
     private DatabaseReference mDatabaseGenre;
@@ -34,7 +33,7 @@ public class NewGroupActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
 
     EditText edit_name;
-    EditText edit_region;
+    Spinner spinner_region;
     Spinner spinner_genre;
     EditText edit_about;
     Button enroll;
@@ -60,7 +59,7 @@ public class NewGroupActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         edit_name = (EditText)findViewById(R.id.edit_name);
-        edit_region = (EditText)findViewById(R.id.edit_region);
+        spinner_region = (Spinner) findViewById(R.id.edit_region);
         spinner_genre = (Spinner)findViewById(R.id.edit_Genre);
         edit_about = (EditText)findViewById(R.id.edit_about);
         enroll = (Button)findViewById(R.id.btn_enroll);
@@ -68,12 +67,12 @@ public class NewGroupActivity extends AppCompatActivity {
         enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edit_name.getText().toString().equals("")||edit_region.getText().toString().equals("")||spinner_genre.getSelectedItem().toString().equals("")||edit_about.getText().toString().equals("")){
+                if(edit_name.getText().toString().equals("")||spinner_region.getSelectedItem().toString().equals("")||spinner_genre.getSelectedItem().toString().equals("")||edit_about.getText().toString().equals("")){
                     Toast.makeText(NewGroupActivity.this, "Plz fill in all the blanks", Toast.LENGTH_LONG).show();
                 }else{
                     currentUser = mAuth.getCurrentUser();
                     name = edit_name.getText().toString();
-                    region = edit_region.getText().toString();
+                    region = spinner_region.getSelectedItem().toString();
                     genre = spinner_genre.getSelectedItem().toString();
                     about = edit_about.getText().toString();
                     writeNewUser(name, currentUser.getEmail(),region,genre,about);

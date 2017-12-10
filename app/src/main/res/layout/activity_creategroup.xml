@@ -77,10 +77,13 @@
         android:layout_above="@+id/textView2"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/textView5"
-        android:background="@drawable/border"
+        android:background="@drawable/box"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        />
 
     <Spinner
         android:id="@+id/edit_Genre"
@@ -90,20 +93,24 @@
         android:layout_alignTop="@+id/textView3"
         android:ems="10"
         android:entries="@array/genre"
-        android:inputType="textPersonName"
-        android:background="@drawable/border"
-        android:textSize="20dp" />
+        android:background="@drawable/box"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
 
-    <EditText
+    <Spinner
         android:id="@+id/edit_region"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
         android:layout_alignStart="@+id/edit_name"
         android:layout_alignTop="@+id/textView2"
-        android:background="@drawable/border"
+        android:background="@drawable/box"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="20dp" />
+        android:entries="@array/city"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
 
     <EditText
         android:id="@+id/edit_about"
@@ -112,12 +119,14 @@
         android:layout_alignStart="@+id/edit_Genre"
         android:layout_below="@+id/edit_Genre"
         android:layout_marginTop="42dp"
-        android:background="@drawable/border"
+        android:background="@drawable/box"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
         android:lines="5"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
 
     <Button
         android:id="@+id/btn_enroll"

@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.taewoong.exchangestudent.Database.MeetingData;
@@ -23,12 +24,14 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class NewMeetingActivity extends AppCompatActivity{
-
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
     EditText edit_name;
     EditText edit_Location;
     EditText edit_Time;
     EditText edit_About;
     EditText edit_Cost;
+    EditText edit_address;
+    ImageButton Search_address_btn;
     Button enroll;
     String Name, Location, Time, About, Cost, Group;
     String Group_title;
@@ -56,10 +59,13 @@ public class NewMeetingActivity extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
 
         edit_name = (EditText)findViewById(R.id.edit_name);
-        edit_Location = (EditText)findViewById(R.id.edit_Location);
+
         edit_Time = (EditText)findViewById(R.id.edit_time);
         edit_About = (EditText)findViewById(R.id.edit_about);
         edit_Cost = (EditText)findViewById(R.id.edit_cost);
+        edit_address = (EditText)findViewById(R.id.address_result) ;
+        unfocusable(edit_address);
+        Search_address_btn = (ImageButton)findViewById(R.id.search_address_btn);
 
         enroll = (Button)findViewById(R.id.btn_enroll);
 
@@ -81,7 +87,13 @@ public class NewMeetingActivity extends AppCompatActivity{
                 }
             }
         });
-
+        Search_address_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(NewMeetingActivity.this,WebViewActivity.class);
+                startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+            }
+        });
     }
 
     private void writeNewMeeting(String Cost, String Name, String Location, String Time, String About,String Group) {
@@ -89,5 +101,23 @@ public class NewMeetingActivity extends AppCompatActivity{
         mDatabaseMeeting.child(Name+'('+Group+')').setValue(meetingData);
         mDatabaseUser.child(currentUser.getUid()).child("OrgMeeting").push().setValue(Name+"\n("+Group+")");
         mDatabaseUser.child(currentUser.getUid()).child("JoinedMeeting").push().setValue(Name+"\n("+Group+")");
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
+        switch(requestCode){
+            case SEARCH_ADDRESS_ACTIVITY:
+                if(resultCode == RESULT_OK){
+                    String data = intent.getExtras().getString("data");
+                    if (data != null)
+                        edit_address.setText(data);
+                }
+                break;
+        }
+    }
+
+    public void unfocusable(EditText editText){
+        editText.setFocusable(false);
+        editText.setFocusableInTouchMode(false);
     }
 }

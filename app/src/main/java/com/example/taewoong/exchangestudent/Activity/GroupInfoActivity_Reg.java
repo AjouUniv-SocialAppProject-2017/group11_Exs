@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.taewoong.exchangestudent.Database.GroupData;
-import com.example.taewoong.exchangestudent.Database.MeetingData;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
  * Created by Taewoong on 2017-12-06.
  */
 
-public class GroupInfoActivity extends AppCompatActivity {
+public class GroupInfoActivity_Reg extends AppCompatActivity {
 
     String Name;
     String About;
@@ -42,7 +41,7 @@ public class GroupInfoActivity extends AppCompatActivity {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_groupinfo);
+        setContentView(R.layout.activity_groupinfo_reg);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.taewoong.exchangestudent.Activity.GroupInfoActivity;
 import com.example.taewoong.exchangestudent.Activity.MeetingInfoActivity;
 import com.example.taewoong.exchangestudent.Fragment.item;
 import com.example.taewoong.exchangestudent.R;

@@ -12,8 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.taewoong.exchangestudent.Activity.GroupInfoActivity;
-import com.example.taewoong.exchangestudent.Activity.MeetingInfoActivity;
+import com.example.taewoong.exchangestudent.Activity.GroupInfoActivity_Reg;
 import com.example.taewoong.exchangestudent.Fragment.item;
 import com.example.taewoong.exchangestudent.R;
 
@@ -49,7 +48,7 @@ public class RecyclerAdapter_group extends RecyclerView.Adapter<RecyclerAdapter_
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GroupInfoActivity.class);
+                Intent intent = new Intent(context, GroupInfoActivity_Reg.class);
                 intent.putExtra("Group_title",item.getTitle());
                 context.startActivity(intent);
             }

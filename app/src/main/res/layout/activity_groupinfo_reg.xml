@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Group Info"
+                android:textColor="#fff"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+
+        <Button
+            android:id="@+id/newMeeting_btn"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginEnd="25dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:text="ADD MEETING" />
+
+        <TextView
+            android:id="@+id/group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="32dp"
+            android:text="Name of group"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/regionForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/group_name"
+            android:layout_below="@+id/group_name"
+            android:layout_marginTop="8dp"
+            android:text="Region"
+            android:textColor="@android:color/black"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_region"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/regionForm"
+            android:layout_below="@+id/regionForm"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/genreForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/edit_region"
+            android:layout_below="@+id/edit_region"
+            android:layout_marginTop="8dp"
+            android:text="Genre"
+            android:textColor="@android:color/black"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_genre"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/genreForm"
+            android:layout_below="@+id/genreForm"
+            android:layout_toStartOf="@+id/imageButton"
+            android:ems="10"
+            android:inputType="date" />
+
+
+        <TextView
+            android:id="@+id/aboutForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/edit_genre"
+            android:layout_below="@+id/edit_genre"
+            android:layout_marginTop="8dp"
+            android:text="About"
+            android:textColor="@android:color/black"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_about"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/aboutForm"
+            android:layout_below="@+id/aboutForm"
+            android:layout_toStartOf="@+id/imageButton"
+            android:background="@drawable/box"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:padding="3dp"
+            android:lines="5"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/attendMemberForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/edit_about"
+            android:layout_below="@+id/edit_about"
+            android:layout_marginTop="8dp"
+            android:text="Attending Member"
+            android:textColor="@android:color/black"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/attendMemberForm"
+            android:layout_below="@+id/attendMemberForm"
+            android:background="@drawable/border"
+            android:id="@+id/scrollView2">
+
+            <ListView
+                android:id="@+id/memberlist"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
+            </ListView>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/MeetingListTxv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/scrollView2"
+            android:text="Meeting List"
+            android:textColor="@android:color/black"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/scrollView2"/>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/MeetingListTxv"
+            android:layout_below="@+id/MeetingListTxv"
+            android:background="@drawable/border"
+            android:id="@+id/scrollView3">
+
+            <ListView
+                android:id="@+id/MeetingList"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
+            </ListView>
+        </ScrollView>
+    </RelativeLayout>
+</ScrollView>

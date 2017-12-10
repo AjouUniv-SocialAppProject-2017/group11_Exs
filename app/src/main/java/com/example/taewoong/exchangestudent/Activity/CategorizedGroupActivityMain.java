@@ -4,15 +4,12 @@ import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.taewoong.exchangestudent.Adaptor.MyAdapter;
-import com.example.taewoong.exchangestudent.Database.GenreData;
 import com.example.taewoong.exchangestudent.Database.GroupData;
 import com.example.taewoong.exchangestudent.Database.MyItem;
 import com.example.taewoong.exchangestudent.R;
@@ -22,9 +19,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -132,7 +126,7 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
                 mDatabaseGroupReference.child(myItem.getName()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Intent intent = new Intent(getApplicationContext(), GroupInfoActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), GroupInfoActivity_Unreg.class);
                         intent.putExtra("Group_title",myItem.getName());
                         startActivity(intent);
                     }

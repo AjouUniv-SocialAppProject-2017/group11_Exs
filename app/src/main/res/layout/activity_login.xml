@@ -54,6 +54,7 @@
         android:layout_alignStart="@+id/edit_password"
         android:layout_below="@+id/edit_password"
         android:layout_marginTop="23dp"
+        android:background="@drawable/box"
         android:text="Login" />
 
     <Button

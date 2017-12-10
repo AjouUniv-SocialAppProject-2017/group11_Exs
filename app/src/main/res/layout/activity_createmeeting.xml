@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
@@ -11,6 +13,7 @@
         android:minHeight="?attr/actionBarSize"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,41 +21,74 @@
             android:text="Create Meeting"
             android:textColor="#fff"
             android:textSize="28sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+
+        android:layout_alignEnd="@+id/TextView_cost"
         android:layout_below="@+id/toolbar"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="63dp"
-        android:textSize="17dp"
-        android:textStyle="bold"
+        android:layout_marginTop="49dp"
+        android:text="Name"
         android:textColor="@android:color/black"
-        android:text="Name" />
+        android:textSize="17dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/edit_Location"
-        android:layout_toStartOf="@+id/edit_name"
+        android:layout_above="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="75dp"
+        android:layout_marginStart="18dp"
         android:text="Location"
         android:textColor="@android:color/black"
         android:textSize="17dp"
         android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/address_result"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/extra_address"
+        android:layout_alignTop="@+id/textView2"
+        android:hint="버튼을 눌러 주소를 검색해 주세요"
+        android:maxLines="5"
+        android:textSize="14dp" />
+
+    <ImageButton
+        android:id="@+id/search_address_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@+id/extra_address"
+        android:layout_below="@+id/edit_cost"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/pin" />
+
+    <EditText
+        android:id="@+id/extra_address"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edit_time"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/address_result"
+        android:hint="상세 주소"
+        android:textSize="14dp" />
+
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView5"
-        android:layout_marginBottom="39dp"
-        android:layout_toStartOf="@+id/edit_name"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_marginBottom="36dp"
         android:text="When"
         android:textColor="@android:color/black"
         android:textSize="17dp"
@@ -62,9 +98,8 @@
         android:id="@+id/TextView_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edit_Location"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_marginBottom="22dp"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignTop="@+id/edit_cost"
         android:text="Cost"
         android:textColor="@android:color/black"
         android:textSize="17dp"
@@ -73,10 +108,11 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView"
+        android:layout_width="53dp"
+        android:layout_height="27dp"
         android:layout_alignTop="@+id/edit_about"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_toStartOf="@+id/edit_about"
         android:text="About"
         android:textColor="@android:color/black"
         android:textSize="17dp"
@@ -86,47 +122,41 @@
         android:id="@+id/edit_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView"
-        android:layout_marginStart="26dp"
-        android:layout_toEndOf="@+id/textView5"
-        android:background="@drawable/border"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignStart="@+id/edit_cost"
+        android:background="@drawable/box"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="20dp" />
-
-    <EditText
-        android:id="@+id/edit_Location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/dateMeeting"
-        android:layout_alignStart="@+id/edit_name"
-        android:layout_marginBottom="23dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textSize="20dp" />
 
     <EditText
         android:id="@+id/edit_time"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/timeMeetind"
+        android:layout_height="26dp"
         android:layout_alignTop="@+id/textView3"
-        android:background="@drawable/border"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/textView3"
+        android:background="@drawable/box"
         android:ems="10"
         android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textSize="20dp" />
 
     <EditText
         android:id="@+id/edit_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView_cost"
-        android:layout_alignBottom="@+id/TextView_cost"
-        android:layout_alignStart="@+id/edit_Location"
-        android:background="@drawable/border"
+        android:layout_above="@+id/address_result"
+        android:layout_alignStart="@+id/address_result"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/box"
         android:ems="10"
         android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textSize="20dp" />
 
     <EditText
@@ -134,13 +164,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_enroll"
-        android:layout_alignEnd="@+id/timeMeetind"
-        android:layout_marginBottom="26dp"
-        android:background="@drawable/border"
+        android:layout_alignStart="@+id/edit_time"
+        android:background="@drawable/box"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
         android:lines="5"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textSize="20dp" />
 
     <Button
@@ -149,27 +180,8 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/edit_about"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:text="Enroll" />
-
-    <TextView
-        android:id="@+id/dateMeeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignStart="@+id/edit_Location"
-        android:layout_marginStart="12dp"
-        android:text="날짜(datePicker)" />
-
-    <TextView
-        android:id="@+id/timeMeetind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dateMeeting"
-        android:layout_alignBottom="@+id/dateMeeting"
-        android:layout_alignEnd="@+id/edit_Location"
-        android:text="시간(timePicker)" />
 
 
 </RelativeLayout>

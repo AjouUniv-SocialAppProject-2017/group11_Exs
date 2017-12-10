@@ -102,8 +102,6 @@ public class EditprofileActivity extends AppCompatActivity {
             }
         });
 
-
-
         Intent intent = getIntent();
         defaultName = intent.getStringExtra("nameForm");
         editName.setText(defaultName);
@@ -129,7 +127,6 @@ public class EditprofileActivity extends AppCompatActivity {
     }
 
     private void updateName(String newName) {
-
         mDatabaseReferenceName.child(currentUser.getUid()).child("Name").setValue(name);
         finish();
     }
@@ -156,13 +153,8 @@ public class EditprofileActivity extends AppCompatActivity {
         //업로드할 파일이 있으면 수행
         if (filePath != null) {
             //업로드 진행 Dialog 보이기
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("업로드중...");
-            progressDialog.show();
-
             //storage
             FirebaseStorage storage = FirebaseStorage.getInstance();
-
             //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
@@ -175,7 +167,6 @@ public class EditprofileActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기
                             Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
                         }
                     })
@@ -183,18 +174,7 @@ public class EditprofileActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    //진행중
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests") //이걸 넣어 줘야 아랫줄에 에러가 사라진다. 넌 누구냐?
-                                    double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                            //dialog에 진행률을 퍼센트로 출력해 준다
-                            progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                         }
                     });
         } else {
