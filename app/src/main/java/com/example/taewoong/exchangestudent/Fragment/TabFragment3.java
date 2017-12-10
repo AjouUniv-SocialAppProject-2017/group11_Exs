@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.taewoong.exchangestudent.Activity.EditprofileActivity;
 import com.example.taewoong.exchangestudent.R;
@@ -19,6 +20,8 @@ import com.example.taewoong.exchangestudent.R;
 public class TabFragment3 extends Fragment{
 
     Button editprofile;
+    TextView Txv_name;
+    String name;
 
     public TabFragment3(){
 
@@ -33,10 +36,13 @@ public class TabFragment3 extends Fragment{
     {
         View view = inflater.inflate(R.layout.tab_fragment3,container,false);
         editprofile = (Button)view.findViewById(R.id.editprofile);
+        Txv_name = (TextView)view.findViewById(R.id.textView16);
+        name = Txv_name.getText().toString();
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), EditprofileActivity.class);
+                intent.putExtra("myName",name);
                 startActivity(intent);
             }
         });
