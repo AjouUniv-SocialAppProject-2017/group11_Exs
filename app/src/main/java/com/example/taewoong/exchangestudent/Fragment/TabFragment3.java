@@ -37,7 +37,10 @@ public class TabFragment3 extends Fragment{
         View view = inflater.inflate(R.layout.tab_fragment3,container,false);
         editprofile = (Button)view.findViewById(R.id.editprofile);
         Txv_name = (TextView)view.findViewById(R.id.textView16);
-        name = Txv_name.getText().toString();
+        /*name = Txv_name.getText().toString();
+           */
+        Txv_name.setHint("이름을 입력해주세요.");
+        name =Txv_name.getText().toString();
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +48,10 @@ public class TabFragment3 extends Fragment{
                 intent.putExtra("myName",name);
                 startActivity(intent);
             }
+
+
         });
+
         return view;
     }
 }

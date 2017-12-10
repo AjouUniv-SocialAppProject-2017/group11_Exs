@@ -12,13 +12,23 @@ public class UserData {
     public ArrayList<String> Interest;
     public ArrayList<String> Joined_meeting;
     public String UID;
+    public String userName;
+    public String picUrl;
+
+
 
 
     public UserData(){
 
     }
-
-    public UserData(String userEmail){
-        this.userEmail = userEmail;
+    public UserData(String userName){
+        this.userName = userName;
     }
+
+    public UserData(String userName, String picUrl){
+        this.userName = userName;
+        this.picUrl = picUrl;
+    }
+
+
 }

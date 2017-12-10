@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.taewoong.exchangestudent.Database.UserData;
 import com.example.taewoong.exchangestudent.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,8 +40,10 @@ public class EditprofileActivity extends AppCompatActivity {
     Button editInterest;
     Button save;
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private DatabaseReference mDatabaseUserName;
+    private DatabaseReference mDatabaseUserPicture;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,25 +55,38 @@ public class EditprofileActivity extends AppCompatActivity {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        editName = (EditText)findViewById(R.id.editText9);
+        editName = (EditText) findViewById(R.id.editText9);
         Intent intent = getIntent();
         name = intent.getStringExtra("myName");
         editName.setHint(name);
 
 
-        UserProfileChangeRequest profileUpdates =
-                new UserProfileChangeRequest.Builder().
-                        setDisplayName(name).
-                        setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg")).build();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        mDatabaseUserName = FirebaseDatabase.getInstance().getReference("users");
 
-        user.updateProfile(profileUpdates)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(EditprofileActivity.this, "업데이트 완료",Toast.LENGTH_LONG).show();
-                            }
-                    }
-                });
+
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editName.getText().toString().equals("")) {
+                    Toast.makeText(EditprofileActivity.this, "Please Fill out Your Name", Toast.LENGTH_LONG).show();
+                } else if (editName.getText().toString().equals(name)) {
+                    Toast.makeText(EditprofileActivity.this, "Please Update Your Name", Toast.LENGTH_LONG).show();
+                } else {
+                    updateName(editName.getText().toString());
+                }
+            }
+        });
     }
-}
+
+        private void updateName(String newName){
+
+            UserData userData = new UserData(newName);
+            mDatabaseUserName.child(currentUser.getUid()).child("Name").setValue(myName);
+
+    }
+
+    }
+
