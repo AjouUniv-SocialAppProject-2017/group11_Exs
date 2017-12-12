@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class TabFragment1 extends Fragment {
     private FirebaseAuth mAuth;
     private ChildEventListener mChildEventListener;
     RecyclerView recyclerView;
-
+    RecyclerAdapter_meeting mAdaptor;
 
     ImageView test1Btn;
     ImageView test2Btn;
@@ -51,7 +52,7 @@ public class TabFragment1 extends Fragment {
     ImageView test9Btn;
     ImageView test10Btn;
 
-    List<item> items;
+       List<item> items;
     public TabFragment1(){
     }
     @Override
@@ -86,7 +87,7 @@ public class TabFragment1 extends Fragment {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                recyclerView.getAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -99,17 +100,6 @@ public class TabFragment1 extends Fragment {
 
             }
         });
-//        mMyMeetingReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                items.add(new item(R.drawable.a,dataSnapshot.getValue(String.class)));
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
 
         newgroup_btn = (Button)view.findViewById(R.id.newgroup);
         newgroup_btn.setOnClickListener(new View.OnClickListener() {
@@ -227,8 +217,25 @@ public class TabFragment1 extends Fragment {
                 getActivity().finish();
             }
         });
+        mAdaptor = new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1);
+        recyclerView.setAdapter(mAdaptor);
+        ItemTouchHelper itemDecor = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT, ItemTouchHelper.UP) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                final int fromPos = viewHolder.getAdapterPosition();
+                final int toPos = target.getAdapterPosition();
+                mAdaptor.notifyItemMoved(fromPos, toPos);
+                return true;
+            }
 
-        recyclerView.setAdapter(new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1));
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                final int fromPos = viewHolder.getAdapterPosition();
+                items.remove(fromPos);
+                mAdaptor.notifyItemRemoved(fromPos);
+            }
+        });
+        itemDecor.attachToRecyclerView(recyclerView);
         return view;
     }
 }

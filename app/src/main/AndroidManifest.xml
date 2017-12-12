@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.MeetingInfoActivity"></activity>
+        <activity android:name=".Activity.MeetingInfoActivity_Reg"></activity>
         <activity android:name=".Activity.ChatActivity"></activity>
         <activity android:name=".Activity.NewMeetingActivity"></activity>
         <activity android:name=".Activity.SignUpActivity"></activity>
@@ -30,6 +30,8 @@
         <activity android:name=".Activity.CategorizedGroupActivityMain"/>
         <activity android:name=".Activity.WebViewActivity"/>
         <activity android:name=".Activity.GroupInfoActivity_Unreg"/>
+        <activity android:name=".Activity.MeetingInfoActivity_Unreg"/>
+        <activity android:name=".Activity.GroupInfoActivity_Owned"/>
     </application>
 
 </manifest>

@@ -58,11 +58,14 @@
         <EditText
             android:id="@+id/edit_region"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_alignStart="@+id/regionForm"
             android:layout_below="@+id/regionForm"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:focusable="false"
+            android:background="@drawable/box"
+            android:paddingLeft="10dp"/>
 
         <TextView
             android:id="@+id/genreForm"
@@ -79,12 +82,15 @@
         <EditText
             android:id="@+id/edit_genre"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_alignStart="@+id/genreForm"
             android:layout_below="@+id/genreForm"
             android:layout_toStartOf="@+id/imageButton"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:focusable="false"
+            android:background="@drawable/box"
+            android:paddingLeft="10dp"/>
 
 
         <TextView

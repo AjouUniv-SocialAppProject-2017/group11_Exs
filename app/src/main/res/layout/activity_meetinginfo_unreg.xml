@@ -27,29 +27,28 @@
                 />
         </android.support.v7.widget.Toolbar>
 
-        <ImageButton
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/imageButton"
+        <Button
+            android:id="@+id/Join_Button"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/toolbar"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/chat_bubble" />
+            android:text="Join" />
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageButton"
-            android:layout_marginStart="32dp"
+            android:layout_below="@+id/Join_Button"
+            android:layout_marginStart="37dp"
             android:text="Name of meeting"
+            android:textColor="@android:color/black"
             android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            android:textStyle="bold" />
 
 
         <TextView
@@ -66,13 +65,15 @@
 
         <EditText
             android:id="@+id/timeForm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
             android:layout_alignStart="@+id/time"
             android:layout_below="@+id/time"
-            android:layout_toStartOf="@+id/imageButton"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:focusable="false"
+            android:background="@drawable/box"
+            android:paddingLeft="10dp"/>
 
         <TextView
             android:id="@+id/location"
@@ -89,11 +90,10 @@
         <EditText
             android:id="@+id/locationForm"
             android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             android:layout_alignStart="@+id/location"
             android:layout_below="@+id/location"
-            android:layout_toStartOf="@+id/imageButton"
             android:ems="10"
             android:background="@drawable/box"
             android:inputType="textMultiLine"
@@ -117,13 +117,15 @@
 
         <EditText
             android:id="@+id/costForm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
             android:layout_alignStart="@+id/cost"
             android:layout_below="@+id/cost"
-            android:layout_toStartOf="@+id/imageButton"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:focusable="false"
+            android:background="@drawable/box"
+            android:paddingLeft="10dp"/>
 
 
     <TextView
@@ -140,11 +142,10 @@
 
     <EditText
         android:id="@+id/aboutForm"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/about"
         android:layout_below="@+id/about"
-        android:layout_toStartOf="@+id/imageButton"
         android:ems="10"
         android:background="@drawable/box"
         android:inputType="textMultiLine"
@@ -154,35 +155,5 @@
         android:layout_marginTop="5dp"
         android:gravity="top"
         />
-
-        <TextView
-            android:id="@+id/member"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/aboutForm"
-            android:layout_below="@+id/aboutForm"
-            android:layout_marginTop="8dp"
-            android:text="Member"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"/>
-
-        <ScrollView
-            android:id="@+id/ScrollView3"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/member"
-            android:background="@drawable/border"
-            android:layout_alignStart="@+id/member">
-
-            <ListView
-                android:id="@+id/memberForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/imageButton"
-                android:layout_below="@+id/aboutForm"
-                android:layout_marginEnd="16dp">
-            </ListView>
-        </ScrollView>
     </RelativeLayout>
 </ScrollView>

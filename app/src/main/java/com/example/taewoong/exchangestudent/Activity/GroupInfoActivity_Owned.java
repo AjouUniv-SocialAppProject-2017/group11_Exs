@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * Created by Taewoong on 2017-12-06.
  */
 
-public class GroupInfoActivity_Reg extends AppCompatActivity {
+public class GroupInfoActivity_Owned extends AppCompatActivity {
     static final ArrayList<String> List_member = new ArrayList<String>();
     static final ArrayList<String> List_Meeting = new ArrayList<String>();
 
@@ -44,6 +44,7 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
     EditText edit_genre;
     EditText edit_region;
     Button newMeeting;
+    Button edit_btn;
 
     public ListView mListView_Member;
     public ListView mListView_Meeting;
@@ -55,7 +56,7 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_groupinfo_reg);
+        setContentView(R.layout.activity_groupinfo_owned);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -67,6 +68,7 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
         edit_genre = (EditText)findViewById(R.id.edit_genre);
         edit_region = (EditText)findViewById(R.id.edit_region);
         newMeeting = (Button)findViewById(R.id.newMeeting_btn);
+        edit_btn = (Button)findViewById(R.id.btn_edit);
 
         Intent intent = getIntent();
         Name = intent.getStringExtra("Group_title");
@@ -83,6 +85,13 @@ public class GroupInfoActivity_Reg extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), NewMeetingActivity.class);
                 intent.putExtra("Group_title",Name);
                 startActivity(intent);
+            }
+        });
+
+        edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

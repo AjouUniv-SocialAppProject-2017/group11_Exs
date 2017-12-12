@@ -74,7 +74,6 @@
             android:background="@drawable/box"
             android:ems="10"
             android:inputType="date"
-            android:focusable="false"
             android:paddingLeft="10dp"/>
 
         <TextView
@@ -95,12 +94,9 @@
             android:layout_height="30dp"
             android:layout_alignStart="@+id/genreForm"
             android:layout_below="@+id/genreForm"
-            android:layout_toStartOf="@+id/imageButton"
             android:background="@drawable/box"
             android:ems="10"
-            android:inputType="date"
-            android:focusable="false"
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp" />
 
 
         <TextView
@@ -129,8 +125,7 @@
             android:padding="3dp"
             android:lines="5"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:focusable="false"/>
+            android:paddingRight="10dp" />
 
         <TextView
             android:id="@+id/attendMemberForm"
@@ -192,6 +187,17 @@
                 android:layout_alignParentBottom="true"></ListView>
 
         </ScrollView>
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/scrollView3"
+            android:layout_marginTop="106dp"
+            android:background="@android:color/transparent"
+            android:text="Edit"
+            android:layout_marginBottom="20dp"/>
 
 
     </RelativeLayout>

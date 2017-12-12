@@ -103,7 +103,6 @@ public class GroupInfoActivity_Unreg extends AppCompatActivity {
 
                     }
                 });
-
                 finish();
             }
         });

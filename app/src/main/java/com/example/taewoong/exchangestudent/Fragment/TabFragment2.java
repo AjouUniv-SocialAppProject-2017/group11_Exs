@@ -4,12 +4,14 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_group;
+import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_group_owned;
 import com.example.taewoong.exchangestudent.Adaptor.RecyclerAdapter_meeting;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +35,8 @@ public class TabFragment2 extends Fragment{
     private FirebaseAuth mAuth;
     List<item> items1;
     List<item> items2;
+    RecyclerAdapter_group mAdaptor1;
+    RecyclerAdapter_group_owned mAdaptor2;
     RecyclerView recyclerView1;
     RecyclerView recyclerView2;
     public TabFragment2(){
@@ -90,20 +94,25 @@ public class TabFragment2 extends Fragment{
 
             }
         });
-//        mMyGroupReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot dsp : dataSnapshot.getChildren()){
-//                    items1.add(new item(R.drawable.a,dsp.getValue(String.class)));
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
+        mAdaptor1 = new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1);
+        recyclerView1.setAdapter(mAdaptor1);
+        ItemTouchHelper itemDecor1 = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT, ItemTouchHelper.UP) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                final int fromPos = viewHolder.getAdapterPosition();
+                final int toPos = target.getAdapterPosition();
+                mAdaptor1.notifyItemMoved(fromPos, toPos);
+                return true;
+            }
 
-        recyclerView1.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1));
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                final int fromPos = viewHolder.getAdapterPosition();
+                items1.remove(fromPos);
+                mAdaptor1.notifyItemRemoved(fromPos);
+            }
+        });
+        itemDecor1.attachToRecyclerView(recyclerView1);
 
         //두번째 cardView
         recyclerView2 = view.findViewById(R.id.recyclerView2);
@@ -140,34 +149,39 @@ public class TabFragment2 extends Fragment{
 
             }
         });
-//        mOrgGroupReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot dsp : dataSnapshot.getChildren()){
-//                    items2.add(new item(R.drawable.a,dsp.getValue(String.class)));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
 
-        recyclerView2.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
+        mAdaptor2 = new RecyclerAdapter_group_owned(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1);
+        recyclerView2.setAdapter(mAdaptor2);
+        ItemTouchHelper itemDecor2 = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT, ItemTouchHelper.UP) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                final int fromPos = viewHolder.getAdapterPosition();
+                final int toPos = target.getAdapterPosition();
+                mAdaptor2.notifyItemMoved(fromPos, toPos);
+                return true;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                final int fromPos = viewHolder.getAdapterPosition();
+                items2.remove(fromPos);
+                mAdaptor2.notifyItemRemoved(fromPos);
+            }
+        });
+        itemDecor2.attachToRecyclerView(recyclerView2);
         return view;
     }
 
     @Override
     public void onStart() {
-        recyclerView2.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
+        recyclerView2.setAdapter(new RecyclerAdapter_group_owned(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
         recyclerView1.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1));
         super.onStart();
     }
 
     @Override
     public void onResume() {
-        recyclerView2.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
+        recyclerView2.setAdapter(new RecyclerAdapter_group_owned(getActivity().getApplicationContext(),items2, R.layout.tab_fragment1));
         recyclerView1.setAdapter(new RecyclerAdapter_group(getActivity().getApplicationContext(),items1, R.layout.tab_fragment1));
         super.onResume();
     }
