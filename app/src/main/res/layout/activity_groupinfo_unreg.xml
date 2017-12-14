@@ -62,7 +62,6 @@
             android:layout_alignStart="@+id/regionForm"
             android:layout_below="@+id/regionForm"
             android:ems="10"
-            android:inputType="date"
             android:focusable="false"
             android:background="@drawable/box"
             android:paddingLeft="10dp"/>
@@ -120,7 +119,8 @@
             android:padding="3dp"
             android:lines="5"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:focusable="false"/>
 
         <ScrollView
             android:layout_width="wrap_content"

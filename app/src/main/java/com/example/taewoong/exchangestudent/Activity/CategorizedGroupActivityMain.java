@@ -79,7 +79,7 @@ public class CategorizedGroupActivityMain extends AppCompatActivity {
                             Group_Genre = groupData.Genre;
                             Group_About = groupData.About;
                             if(Group_Genre.equals(Genre)){
-                                mMyAdapter.addItem(ContextCompat.getDrawable(getApplicationContext(), R.drawable.icon),dsp.getValue().toString(),Group_About);
+                                mMyAdapter.addItem(dsp.getValue().toString(),Group_About);
                             }
                             mMyAdapter.notifyDataSetChanged();
                         }

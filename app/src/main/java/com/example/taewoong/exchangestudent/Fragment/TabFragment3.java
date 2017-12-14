@@ -82,7 +82,7 @@ public class TabFragment3 extends Fragment{
         mProfilePicture.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                 profilePictureName = dataSnapshot.getValue().toString();
+                profilePictureName = dataSnapshot.getValue().toString();
                 storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com/").child("images");
                 Glide.with(getContext() /* context */)
                         .using(new FirebaseImageLoader())
@@ -113,14 +113,13 @@ public class TabFragment3 extends Fragment{
             }
         });
 
-        defaultName.setHint("이름을 입력해주세요.");
-        nameForm =defaultName.getText().toString();
+        defaultName.setHint("이름을 설정해주세요.");
         defaultName.setText(mDatabaseUserName.child(currentUser.getUid()).child("Name").toString());
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), EditprofileActivity.class);
-                intent.putExtra("nameForm",nameForm);
+                intent.putExtra("nameForm",name);
                 startActivity(intent);
             }
         });

@@ -27,8 +27,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.taewoong.exchangestudent.Database.UserData;
 import com.example.taewoong.exchangestudent.R;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,8 +38,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -57,7 +62,8 @@ public class EditprofileActivity extends AppCompatActivity {
 
     String name;
     String defaultName;
-    String profilePictureUrl;
+    String profilePictureName;
+
 
     EditText editName;
     ImageView picture;
@@ -65,10 +71,16 @@ public class EditprofileActivity extends AppCompatActivity {
     Button editInterest;
     Button save;
 
+
     private DatabaseReference mDatabaseReferenceName;
     private DatabaseReference mDatabaseReferencePic;
+    private DatabaseReference mProfilePicture;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    StorageReference storageRef;
+    FirebaseStorage storage;
+
+
 
     private Uri filePath;
 
@@ -111,6 +123,7 @@ public class EditprofileActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+        storage = FirebaseStorage.getInstance();
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +137,24 @@ public class EditprofileActivity extends AppCompatActivity {
                     name = editName.getText().toString();
                     updateName(name);
                 }
+            }
+        });
+
+        mProfilePicture = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid()).child("profileUrl");
+        mProfilePicture.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                profilePictureName = dataSnapshot.getValue().toString();
+                storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com/").child("images");
+                Glide.with(getApplicationContext() /* context */)
+                        .using(new FirebaseImageLoader())
+                        .load(storageRef.child(profilePictureName))
+                        .into(picture);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }
