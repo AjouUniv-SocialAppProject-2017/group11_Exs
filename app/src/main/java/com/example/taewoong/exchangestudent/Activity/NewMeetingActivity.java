@@ -99,9 +99,9 @@ public class NewMeetingActivity extends AppCompatActivity{
 
     private void writeNewMeeting(String Cost, String Name, String Location, String Time, String About,String Group) {
         MeetingData meetingData = new MeetingData(Cost, Location, Time, About, Group);
-        mDatabaseMeeting.child(Name+'('+Group+')').setValue(meetingData);
-        mDatabaseUser.child(currentUser.getUid()).child("OrgMeeting").push().setValue(Name+"\n("+Group+")");
-        mDatabaseUser.child(currentUser.getUid()).child("JoinedMeeting").push().setValue(Name+"\n("+Group+")");
+        mDatabaseMeeting.child(Name+ '('+Group+')').setValue(meetingData);
+        mDatabaseUser.child(currentUser.getUid()).child("OrgMeeting").push().setValue(Name+'('+Group+")");
+        mDatabaseUser.child(currentUser.getUid()).child("JoinedMeeting").push().setValue(Name+'('+Group+")");
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent){

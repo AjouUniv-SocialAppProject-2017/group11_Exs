@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     private ViewPager viewPager;
     private Button logout;
     private FirebaseAuth mAuth;
+    private TextView toolbar_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +42,15 @@ public class MainActivity extends AppCompatActivity
         actionBar.setDisplayShowTitleEnabled(false);
         // Initializing the TabLayout
         tabLayout = findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab One"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab Two"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab Three"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.group_pink));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.meeting_gray));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.profile_gray));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         mAuth = FirebaseAuth.getInstance();
 
         logout = (Button)findViewById(R.id.logout);
+        toolbar_title = (TextView)findViewById(R.id.toolbar_title);
 
         // Initializing ViewPager
         viewPager = findViewById(R.id.pager);
@@ -63,11 +66,38 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                switch (tab.getPosition()) {
+                    case 0:
+                        tab.setIcon(R.drawable.group_pink);
+                        toolbar_title.setText("Meeting");
+                        break;
+                    case 1:
+                        tab.setIcon(R.drawable.meeting_pink);
+                        toolbar_title.setText("Group");
+                        break;
+                    case 2:
+                        tab.setIcon(R.drawable.profile_pink);
+                        toolbar_title.setText("Profile");
+                        break;
+                }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                switch (tab.getPosition()) {
+                    case 0:
+                        tab.setIcon(R.drawable.group_gray);
+                        toolbar_title.setText("Meeting");
+                        break;
+                    case 1:
+                        tab.setIcon(R.drawable.meeting_gray);
+                        toolbar_title.setText("Group");
+                        break;
+                    case 2:
+                        tab.setIcon(R.drawable.profile_gray);
+                        toolbar_title.setText("Profile");
+                        break;
+                }
             }
 
             @Override

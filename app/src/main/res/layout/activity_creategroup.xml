@@ -7,7 +7,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#C24759"
         android:minHeight="?attr/actionBarSize"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -135,7 +135,7 @@
         android:layout_alignEnd="@+id/edit_about"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/box"
         android:text="Enroll" />
 
 

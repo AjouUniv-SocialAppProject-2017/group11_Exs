@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="#C24759"
             android:minHeight="?attr/actionBarSize"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -34,19 +34,20 @@
             android:id="@+id/newMeeting_btn"
             android:layout_width="100dp"
             android:layout_height="30dp"
+            android:layout_alignBottom="@+id/toolbar"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/toolbar"
-            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="11dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:text="ADD MEETING" />
+            android:text="ADD MEETING"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/group_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="32dp"
             android:text="Name of group"
             android:textColor="@android:color/black"
@@ -74,7 +75,7 @@
             android:background="@drawable/box"
             android:ems="10"
             android:inputType="date"
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp" />
 
         <TextView
             android:id="@+id/genreForm"
@@ -122,8 +123,8 @@
             android:ems="10"
             android:gravity="top"
             android:inputType="textMultiLine"
-            android:padding="3dp"
             android:lines="5"
+            android:padding="3dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp" />
 
@@ -144,11 +145,11 @@
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/attendMemberForm"
             android:layout_below="@+id/attendMemberForm"
             android:layout_marginRight="50dp"
-            android:layout_alignStart="@+id/attendMemberForm"
-            android:fillViewport="true"
-            android:background="@drawable/box">
+            android:background="@drawable/box"
+            android:fillViewport="true">
 
             <ListView
                 android:id="@+id/memberlist"
@@ -169,15 +170,15 @@
             android:textStyle="bold" />
 
         <ScrollView
+            android:id="@+id/scrollView3"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_alignStart="@+id/MeetingListTxv"
             android:layout_below="@+id/MeetingListTxv"
-            android:background="@drawable/box"
-            android:id="@+id/scrollView3"
+            android:layout_marginBottom="30dp"
             android:layout_marginRight="50dp"
-            android:fillViewport="true"
-            android:layout_marginBottom="30dp">
+            android:background="@drawable/box"
+            android:fillViewport="true">
 
             <ListView
                 android:id="@+id/MeetingList"
@@ -194,10 +195,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/scrollView3"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="106dp"
-            android:background="@android:color/transparent"
-            android:text="Edit"
-            android:layout_marginBottom="20dp"/>
+            android:background="@drawable/box"
+            android:text="Edit" />
 
 
     </RelativeLayout>

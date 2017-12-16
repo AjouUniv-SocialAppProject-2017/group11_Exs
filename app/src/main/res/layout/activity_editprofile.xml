@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#C24759"
         android:minHeight="?attr/actionBarSize"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -68,7 +68,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btn_editprofile"
         android:layout_width="wrap_content"
         android:layout_height="20sp"
         android:layout_alignBottom="@+id/textView25"
@@ -81,29 +81,32 @@
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView25"
+        android:layout_alignStart="@+id/btn_editprofile"
         android:layout_below="@+id/textView25"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="29dp"
         android:text="#Soccer"
-        android:textSize="15sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView26"
         android:layout_alignBottom="@+id/textView26"
-        android:layout_alignEnd="@+id/imageView11"
-        android:textSize="15sp"
-        android:text="#Study" />
+        android:layout_alignStart="@+id/button2"
+        android:text="#Study"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView27"
-        android:layout_alignStart="@+id/button6"
-        android:textSize="15sp"
-        android:text="#Fitness" />
+        android:layout_alignBaseline="@+id/textView26"
+        android:layout_alignBottom="@+id/textView26"
+        android:layout_alignEnd="@+id/textView25"
+        android:layout_marginEnd="23dp"
+        android:text="#Fitness"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView30"
@@ -124,11 +127,31 @@
         android:textSize="15sp"
         android:text="" />
 
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_alignStart="@+id/textView28"
+        android:text="#Fitness"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView30"
+        android:layout_alignBottom="@+id/textView30"
+        android:layout_toEndOf="@+id/textView30"
+        android:text="#Fitness"
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView31"
+        android:layout_below="@+id/textView31"
+        android:layout_marginTop="22dp"
         android:layout_toEndOf="@+id/button5"
         android:background="@drawable/box"
         android:text="save" />

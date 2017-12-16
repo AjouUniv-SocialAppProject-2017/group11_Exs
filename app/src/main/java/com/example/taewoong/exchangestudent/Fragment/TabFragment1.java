@@ -37,7 +37,6 @@ public class TabFragment1 extends Fragment {
     Button newgroup_btn;
     private DatabaseReference mMyMeetingReference;
     private FirebaseAuth mAuth;
-    private ChildEventListener mChildEventListener;
     RecyclerView recyclerView;
     RecyclerAdapter_meeting mAdaptor;
 
@@ -124,19 +123,15 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Cook");
-
                 startActivity(intent);
-                getActivity().finish();
-            }
+           }
         });
         test2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Religion");
-
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test3Btn.setOnClickListener(new View.OnClickListener() {
@@ -144,9 +139,7 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Movie");
-
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test4Btn.setOnClickListener(new View.OnClickListener() {
@@ -154,9 +147,7 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Trip");
-
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test5Btn.setOnClickListener(new View.OnClickListener() {
@@ -164,9 +155,7 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","pet");
-
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test6Btn.setOnClickListener(new View.OnClickListener() {
@@ -174,9 +163,7 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Music");
-
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test7Btn.setOnClickListener(new View.OnClickListener() {
@@ -184,19 +171,15 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Food");
-
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test8Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("Genre","WorkOut");
-
+                intent.putExtra("Genre","Study");
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test9Btn.setOnClickListener(new View.OnClickListener() {
@@ -205,7 +188,6 @@ public class TabFragment1 extends Fragment {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Art");
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         test10Btn.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +196,6 @@ public class TabFragment1 extends Fragment {
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
                 intent.putExtra("Genre","Etc");
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         mAdaptor = new RecyclerAdapter_meeting(getActivity().getApplicationContext(),items, R.layout.tab_fragment1);

@@ -32,6 +32,7 @@
         <activity android:name=".Activity.GroupInfoActivity_Unreg"/>
         <activity android:name=".Activity.MeetingInfoActivity_Unreg"/>
         <activity android:name=".Activity.GroupInfoActivity_Owned"/>
+        <activity android:name=".Activity.EditInterestActivity"/>
     </application>
 
 </manifest>

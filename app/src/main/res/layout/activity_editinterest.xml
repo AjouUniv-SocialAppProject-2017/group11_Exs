@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#C24759"
         android:minHeight="?attr/actionBarSize"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -27,222 +27,142 @@
         android:id="@+id/btn_cook"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="219dp"
+        android:layout_below="@+id/txv_music"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toStartOf="@+id/txv_religion"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/cook" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btn_religion"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/btn_cook"
         android:layout_toEndOf="@+id/btn_cook"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/religion"
-        android:layout_marginHorizontal="5dp"/>
+        app:srcCompat="@drawable/religion" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/btn_movie"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignTop="@+id/imageButton3"
-        android:layout_marginHorizontal="5dp"
-        android:layout_toEndOf="@+id/imageButton3"
+        android:layout_alignTop="@+id/btn_religion"
+        android:layout_toEndOf="@+id/txv_food"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/movie" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/btn_trip"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignTop="@+id/imageButton4"
-        android:layout_marginHorizontal="5dp"
-        android:layout_toEndOf="@+id/imageButton4"
+        android:layout_alignTop="@+id/btn_movie"
+        android:layout_toEndOf="@+id/btn_movie"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/tour" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/btn_pet"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignTop="@+id/imageButton5"
-        android:layout_toEndOf="@+id/imageButton5"
-        app:srcCompat="@drawable/pet"
+        android:layout_above="@+id/btn_music"
+        android:layout_toEndOf="@+id/btn_trip"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:layout_marginHorizontal="5dp"/>
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:srcCompat="@drawable/pet" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/btn_music"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/textView10"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginTop="31dp"
-        android:layout_toStartOf="@+id/imageButton8"
+        android:layout_alignStart="@+id/btn_cook"
+        android:layout_below="@+id/btn_cook"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="37dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/music" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/btn_food"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignStart="@+id/imageButton3"
-        android:layout_alignTop="@+id/imageButton7"
+        android:layout_alignTop="@+id/btn_music"
         android:layout_marginHorizontal="5dp"
+        android:layout_toEndOf="@+id/btn_cook"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/food" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView11"
-        android:layout_below="@+id/btn_cook"
-        android:text="Cook"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageButton3"
-        android:layout_below="@+id/imageButton3"
-        android:text="Religion"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton9"
-        android:layout_below="@+id/imageButton4"
-        android:text="Movie"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView29"
-        android:layout_below="@+id/imageButton5"
-        android:text="Trip"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView32"
-        android:layout_below="@+id/imageButton6"
-        android:text="Pet"
-        android:textStyle="bold" />
-
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/btn_study"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignTop="@+id/imageButton8"
+        android:layout_alignTop="@+id/btn_food"
         android:layout_marginHorizontal="5dp"
-        android:layout_toEndOf="@+id/imageButton8"
+        android:layout_toEndOf="@+id/btn_food"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/study" />
 
     <ImageButton
-        android:id="@+id/imageButton10"
+        android:id="@+id/btn_art"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignTop="@+id/imageButton9"
-        android:layout_toEndOf="@+id/imageButton4"
+        android:layout_alignTop="@+id/btn_study"
+        android:layout_toEndOf="@+id/btn_movie"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/art" />
+        app:srcCompat="@drawable/art"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginHorizontal="5dp"/>
 
     <ImageButton
-        android:id="@+id/imageButton11"
+        android:id="@+id/btn_etc"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignStart="@+id/imageButton6"
-        android:layout_alignTop="@+id/imageButton10"
+        android:layout_alignTop="@+id/btn_art"
+        android:layout_marginHorizontal="5dp"
+        android:layout_toEndOf="@+id/btn_art"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/etc" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton7"
-        android:layout_below="@+id/imageButton7"
-        android:text="Music"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView7"
-        android:layout_below="@+id/imageButton8"
-        android:text="Food"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView8"
-        android:layout_below="@+id/imageButton9"
-        android:text="Study"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton10"
-
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/imageButton9"
-        android:text="Art"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton11"
-        android:layout_below="@+id/imageButton11"
-        android:layout_marginStart="16dp"
-        android:text="Etc"
-        android:textStyle="bold" />
-
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="18dp"
-        android:layout_toEndOf="@+id/imageButton10"
-        android:text="EDIT"
-        android:background="@android:color/transparent"/>
+        android:layout_marginBottom="23dp"
+        android:layout_toEndOf="@+id/txv_art"
+        android:background="@drawable/box"
+        android:text="EDIT" />
 
     <TextView
         android:id="@+id/txv_cook"
         android:layout_width="60dp"
         android:layout_height="30dp"
-        android:layout_alignStart="@+id/textView6"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/toolbar"
+        android:layout_marginStart="31dp"
         android:layout_marginTop="47dp"
         android:background="@drawable/box"
         android:ems="10"
@@ -296,7 +216,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tx_pet"
+        android:id="@+id/txv_pet"
         android:layout_width="60dp"
         android:layout_height="30dp"
         android:layout_toEndOf="@+id/txv_trip"
@@ -310,12 +230,12 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tx_music"
+        android:id="@+id/txv_music"
         android:layout_width="65dp"
         android:layout_height="30dp"
         android:layout_alignStart="@+id/txv_cook"
         android:layout_below="@+id/txv_cook"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="21dp"
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="center"
@@ -325,11 +245,11 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tx_food"
+        android:id="@+id/txv_food"
         android:layout_width="60dp"
         android:layout_height="30dp"
-        android:layout_alignTop="@+id/tx_music"
-        android:layout_alignStart="@+id/imageButton8"
+        android:layout_alignBottom="@+id/txv_music"
+        android:layout_toEndOf="@+id/txv_music"
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="center"
@@ -339,11 +259,11 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tx_study"
+        android:id="@+id/txv_study"
         android:layout_width="65dp"
         android:layout_height="30dp"
-        android:layout_alignTop="@+id/tx_food"
-        android:layout_toEndOf="@+id/tx_food"
+        android:layout_alignTop="@+id/txv_food"
+        android:layout_toEndOf="@+id/txv_food"
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="center"
@@ -353,11 +273,11 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tx_art"
+        android:id="@+id/txv_art"
         android:layout_width="65dp"
         android:layout_height="30dp"
-        android:layout_alignTop="@+id/tx_study"
-        android:layout_toEndOf="@+id/tx_study"
+        android:layout_alignTop="@+id/txv_study"
+        android:layout_toEndOf="@+id/txv_study"
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="center"
@@ -367,11 +287,11 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tx_etc"
+        android:id="@+id/txv_etc"
         android:layout_width="65dp"
         android:layout_height="30dp"
-        android:layout_alignTop="@+id/tx_art"
-        android:layout_toEndOf="@+id/tx_art"
+        android:layout_alignTop="@+id/txv_art"
+        android:layout_toEndOf="@+id/txv_art"
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="center"

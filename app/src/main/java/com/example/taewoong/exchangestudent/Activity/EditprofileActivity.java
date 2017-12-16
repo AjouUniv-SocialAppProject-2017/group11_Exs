@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -71,9 +72,12 @@ public class EditprofileActivity extends AppCompatActivity {
     Button editInterest;
     Button save;
 
+    TextView interest1, interest2, interest3, interest4, interest5;
+
 
     private DatabaseReference mDatabaseReferenceName;
     private DatabaseReference mDatabaseReferencePic;
+    private DatabaseReference mMyInterestReference;
     private DatabaseReference mProfilePicture;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
@@ -104,6 +108,21 @@ public class EditprofileActivity extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editText9);
         editPicture = (Button) findViewById(R.id.button5);
         picture = (ImageView) findViewById(R.id.imageView11);
+        editInterest = (Button)findViewById(R.id.btn_editprofile);
+
+        interest1 = (TextView)findViewById(R.id.textView28);
+        interest2 = (TextView)findViewById(R.id.textView26);
+        interest3 = (TextView)findViewById(R.id.textView27);
+        interest4 = (TextView)findViewById(R.id.textView29);
+        interest5 = (TextView)findViewById(R.id.textView32);
+
+        editInterest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),EditInterestActivity.class);
+                startActivity(intent);
+            }
+        });
 
         editPicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +139,7 @@ public class EditprofileActivity extends AppCompatActivity {
         defaultName = intent.getStringExtra("nameForm");
         editName.setText(defaultName);
         mDatabaseReferenceName = FirebaseDatabase.getInstance().getReference("users");
+
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -150,6 +170,38 @@ public class EditprofileActivity extends AppCompatActivity {
                         .using(new FirebaseImageLoader())
                         .load(storageRef.child(profilePictureName))
                         .into(picture);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mMyInterestReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("Interest");
+        mMyInterestReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int count = 0;
+                for(DataSnapshot dsp: dataSnapshot.getChildren()){
+                    if(count == 0){
+                        count ++;
+                        interest1.setText(dsp.getValue().toString());
+                    }else if(count == 1){
+                        count ++;
+                        interest2.setText(dsp.getValue().toString());
+                    }else if(count == 2){
+                       count ++;
+                        interest3.setText(dsp.getValue().toString());
+                    }else if(count == 3){
+                        count ++;
+                        interest4.setText(dsp.getValue().toString());
+                    }else if(count == 4){
+                        count ++;
+                        interest5.setText(dsp.getValue().toString());
+                    }else{
+                        Log.e("5",dsp.getValue().toString());
+                    }
+                }
             }
 
             @Override
