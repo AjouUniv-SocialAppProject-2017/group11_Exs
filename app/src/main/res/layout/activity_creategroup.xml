@@ -74,16 +74,16 @@
         android:id="@+id/edit_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_marginStart="20dp"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_marginStart="11dp"
         android:layout_toEndOf="@+id/textView5"
         android:background="@drawable/box"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textSize="20dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        />
+        android:textSize="20dp" />
 
     <Spinner
         android:id="@+id/edit_Genre"
@@ -118,15 +118,15 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/edit_Genre"
         android:layout_below="@+id/edit_Genre"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="39dp"
         android:background="@drawable/box"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
         android:lines="5"
-        android:textSize="20dp"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"/>
+        android:paddingRight="10dp"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btn_enroll"
@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/edit_about"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/box"
         android:text="Enroll" />
 

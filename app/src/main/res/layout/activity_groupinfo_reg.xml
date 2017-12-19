@@ -40,6 +40,7 @@
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:text="ADD MEETING"
+            android:layout_marginRight="10dp"
             android:textColor="@android:color/white" />
 
         <TextView

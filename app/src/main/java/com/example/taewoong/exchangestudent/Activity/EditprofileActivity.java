@@ -164,7 +164,11 @@ public class EditprofileActivity extends AppCompatActivity {
         mProfilePicture.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                profilePictureName = dataSnapshot.getValue().toString();
+                try {
+                    profilePictureName = dataSnapshot.getValue().toString();
+                }catch (Exception e){
+                    profilePictureName = "default.png";
+                }
                 storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com/").child("images");
                 Glide.with(getApplicationContext() /* context */)
                         .using(new FirebaseImageLoader())
@@ -182,25 +186,29 @@ public class EditprofileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int count = 0;
-                for(DataSnapshot dsp: dataSnapshot.getChildren()){
-                    if(count == 0){
-                        count ++;
-                        interest1.setText(dsp.getValue().toString());
-                    }else if(count == 1){
-                        count ++;
-                        interest2.setText(dsp.getValue().toString());
-                    }else if(count == 2){
-                       count ++;
-                        interest3.setText(dsp.getValue().toString());
-                    }else if(count == 3){
-                        count ++;
-                        interest4.setText(dsp.getValue().toString());
-                    }else if(count == 4){
-                        count ++;
-                        interest5.setText(dsp.getValue().toString());
-                    }else{
-                        Log.e("5",dsp.getValue().toString());
+                try {
+                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                        if (count == 0) {
+                            count++;
+                            interest1.setText(dsp.getValue().toString());
+                        } else if (count == 1) {
+                            count++;
+                            interest2.setText(dsp.getValue().toString());
+                        } else if (count == 2) {
+                            count++;
+                            interest3.setText(dsp.getValue().toString());
+                        } else if (count == 3) {
+                            count++;
+                            interest4.setText(dsp.getValue().toString());
+                        } else if (count == 4) {
+                            count++;
+                            interest5.setText(dsp.getValue().toString());
+                        } else {
+                            Log.e("5", dsp.getValue().toString());
+                        }
                     }
+                }catch(Exception e){
+
                 }
             }
 

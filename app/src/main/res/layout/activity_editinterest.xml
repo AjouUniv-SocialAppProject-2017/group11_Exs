@@ -27,12 +27,10 @@
         android:id="@+id/btn_cook"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/txv_music"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="112dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_toStartOf="@+id/txv_religion"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/cook" />
@@ -52,11 +50,9 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/btn_religion"
-        android:layout_toEndOf="@+id/txv_food"
+        android:layout_toEndOf="@+id/btn_religion"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/movie" />
 
     <ImageButton
@@ -64,23 +60,19 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/btn_movie"
-        android:layout_toEndOf="@+id/btn_movie"
+        android:layout_toEndOf="@+id/btn_study"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/tour" />
 
     <ImageButton
         android:id="@+id/btn_pet"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_above="@+id/btn_music"
-        android:layout_toEndOf="@+id/btn_trip"
+        android:layout_alignTop="@+id/btn_trip"
+        android:layout_toEndOf="@+id/btn_art"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/pet" />
 
     <ImageButton
@@ -89,8 +81,8 @@
         android:layout_height="60dp"
         android:layout_alignStart="@+id/btn_cook"
         android:layout_below="@+id/btn_cook"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_marginTop="37dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
@@ -101,8 +93,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/btn_music"
-        android:layout_marginHorizontal="5dp"
-        android:layout_toEndOf="@+id/btn_cook"
+        android:layout_marginHorizontal="3dp"
+        android:layout_toEndOf="@+id/btn_music"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/food" />
@@ -112,12 +104,10 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/btn_food"
-        android:layout_marginHorizontal="5dp"
+        android:layout_marginHorizontal="3dp"
         android:layout_toEndOf="@+id/btn_food"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         app:srcCompat="@drawable/study" />
 
     <ImageButton
@@ -125,13 +115,11 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/btn_study"
-        android:layout_toEndOf="@+id/btn_movie"
+        android:layout_marginHorizontal="5dp"
+        android:layout_toEndOf="@+id/btn_study"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/art"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginHorizontal="5dp"/>
+        app:srcCompat="@drawable/art" />
 
     <ImageButton
         android:id="@+id/btn_etc"
@@ -150,9 +138,9 @@
         android:id="@+id/btn_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txv_etc"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="23dp"
-        android:layout_toEndOf="@+id/txv_art"
         android:background="@drawable/box"
         android:text="EDIT" />
 
@@ -299,5 +287,16 @@
         android:paddingHorizontal="10dp"
         android:text="#Etc"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_religion"
+        android:layout_alignStart="@+id/txv_music"
+        android:layout_marginBottom="37dp"
+        android:text="Please click 5 interest!"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"/>
 
 </RelativeLayout>

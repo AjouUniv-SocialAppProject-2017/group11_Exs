@@ -138,7 +138,7 @@ public class ChatActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                txv = (TextView)findViewById(android.R.id.text1);
+                txv = (TextView)view.findViewById(android.R.id.text1);
                 String from = txv.getText().toString();
                 NaverTranslateTask asyncTask = new NaverTranslateTask();
                 asyncTask.execute(from);

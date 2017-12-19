@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Taewoong on 2017-11-17.
@@ -50,6 +51,10 @@ public class TabFragment1 extends Fragment {
     ImageView test8Btn;
     ImageView test9Btn;
     ImageView test10Btn;
+
+    int ran[] = {R.drawable.cardview1, R.drawable.cardview2,R.drawable.cardview3,R.drawable.cardview4,R.drawable.cardview5,
+            R.drawable.cardview6,R.drawable.cardview7,R.drawable.cardview8,R.drawable.cardview9,R.drawable.cardview10,R.drawable.cardview11};
+
 
        List<item> items;
     public TabFragment1(){
@@ -75,7 +80,8 @@ public class TabFragment1 extends Fragment {
         mMyMeetingReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                items.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+                int index = (int)(Math.random()*10);
+                items.add(new item(ran[index],dataSnapshot.getValue().toString()));
                 recyclerView.getAdapter().notifyDataSetChanged();
             }
 

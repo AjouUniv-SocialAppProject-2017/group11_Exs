@@ -39,6 +39,10 @@ public class TabFragment2 extends Fragment{
     RecyclerAdapter_group_owned mAdaptor2;
     RecyclerView recyclerView1;
     RecyclerView recyclerView2;
+
+    int ran[] = {R.drawable.cardview1, R.drawable.cardview2,R.drawable.cardview3,R.drawable.cardview4,R.drawable.cardview5,
+            R.drawable.cardview6,R.drawable.cardview7,R.drawable.cardview8,R.drawable.cardview9,R.drawable.cardview10,R.drawable.cardview11};
+
     public TabFragment2(){
 
     }
@@ -70,7 +74,8 @@ public class TabFragment2 extends Fragment{
         mMyGroupReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                items1.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+                int index = (int)(Math.random()*10);
+                items1.add(new item(ran[index],dataSnapshot.getValue().toString()));
                 recyclerView1.getAdapter().notifyDataSetChanged();
             }
 
@@ -125,7 +130,8 @@ public class TabFragment2 extends Fragment{
         mOrgGroupReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                items2.add(new item(R.drawable.a,dataSnapshot.getValue().toString()));
+                int index = (int)(Math.random()*10);
+                items2.add(new item(ran[index],dataSnapshot.getValue().toString()));
                 recyclerView2.getAdapter().notifyDataSetChanged();
             }
 

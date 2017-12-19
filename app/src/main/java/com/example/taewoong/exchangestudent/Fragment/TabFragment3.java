@@ -34,7 +34,7 @@ import com.google.firebase.storage.StorageReference;
  * Created by Taewoong on 2017-11-17.
  */
 
-public class TabFragment3 extends Fragment{
+public class TabFragment3 extends Fragment {
 
     Button editprofile;
     TextView defaultName;
@@ -59,30 +59,29 @@ public class TabFragment3 extends Fragment{
 
     String genre;
 
-    public TabFragment3(){
+    public TabFragment3() {
 
     }
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
-        View view = inflater.inflate(R.layout.tab_fragment3,container,false);
-        editprofile = (Button)view.findViewById(R.id.editprofile);
-        defaultName = (TextView)view.findViewById(R.id.textView16);
-        profile_image = (ImageView)view.findViewById(R.id.imageView2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.tab_fragment3, container, false);
+        editprofile = (Button) view.findViewById(R.id.editprofile);
+        defaultName = (TextView) view.findViewById(R.id.textView16);
+        profile_image = (ImageView) view.findViewById(R.id.imageView2);
 
-        interest1 = (Button)view.findViewById(R.id.textView19);
-        interest2 = (Button)view.findViewById(R.id.textView20);
-        interest3 = (Button)view.findViewById(R.id.textView21);
-        interest4 = (Button)view.findViewById(R.id.textView22);
-        interest5 = (Button)view.findViewById(R.id.textView23);
+        interest1 = (Button) view.findViewById(R.id.textView19);
+        interest2 = (Button) view.findViewById(R.id.textView20);
+        interest3 = (Button) view.findViewById(R.id.textView21);
+        interest4 = (Button) view.findViewById(R.id.textView22);
+        interest5 = (Button) view.findViewById(R.id.textView23);
 
         mDatabaseUserName = FirebaseDatabase.getInstance().getReference("users");
         mAuth = FirebaseAuth.getInstance();
@@ -94,7 +93,12 @@ public class TabFragment3 extends Fragment{
         mProfilePicture.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                profilePictureName = dataSnapshot.getValue().toString();
+
+                try {
+                    profilePictureName = dataSnapshot.getValue().toString();
+                }catch (Exception e){
+                    profilePictureName = "default.png";
+                }
                 storageRef = storage.getReferenceFromUrl("gs://lte-ajou.appspot.com/").child("images");
                 Glide.with(getContext() /* context */)
                         .using(new FirebaseImageLoader())
@@ -113,7 +117,11 @@ public class TabFragment3 extends Fragment{
         mEditProfileReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                name = dataSnapshot.getValue().toString();
+                try {
+                    name = dataSnapshot.getValue().toString();
+                } catch (Exception e) {
+                    name = "Set name";
+                }
                 defaultName.setText(name);
 
             }
@@ -129,25 +137,28 @@ public class TabFragment3 extends Fragment{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int count = 0;
-                for(DataSnapshot dsp: dataSnapshot.getChildren()){
-                    if(count == 0){
-                        count ++;
-                        Log.e("interest1",interest1+"");
-                        interest1.setText(dsp.getValue().toString());
-                    }else if(count == 1){
-                        count ++;
-                        interest2.setText(dsp.getValue().toString());
-                    }else if(count == 2){
-                        count ++;
-                        interest3.setText(dsp.getValue().toString());
-                    }else if(count == 3){
-                        count ++;
-                        interest4.setText(dsp.getValue().toString());
-                    }else if(count == 4){
-                        count ++;
-                        interest5.setText(dsp.getValue().toString());
-                    }else{
-                        Log.e("5",dsp.getValue().toString());
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    try {
+                        if (count == 0) {
+                            count++;
+                            interest1.setText(dsp.getValue().toString());
+                        } else if (count == 1) {
+                            count++;
+                            interest2.setText(dsp.getValue().toString());
+                        } else if (count == 2) {
+                            count++;
+                            interest3.setText(dsp.getValue().toString());
+                        } else if (count == 3) {
+                            count++;
+                            interest4.setText(dsp.getValue().toString());
+                        } else if (count == 4) {
+                            count++;
+                            interest5.setText(dsp.getValue().toString());
+                        } else {
+                            Log.e("5", dsp.getValue().toString());
+                        }
+                    }catch (Exception e){
+
                     }
                 }
             }
@@ -161,9 +172,9 @@ public class TabFragment3 extends Fragment{
         interest1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                genre = interest1.getText().toString().replace("#","");
+                genre = interest1.getText().toString().replace("#", "");
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("Genre",genre);
+                intent.putExtra("Genre", genre);
                 startActivity(intent);
             }
         });
@@ -171,9 +182,9 @@ public class TabFragment3 extends Fragment{
         interest2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                genre = interest2.getText().toString().replace("#","");
+                genre = interest2.getText().toString().replace("#", "");
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("Genre",genre);
+                intent.putExtra("Genre", genre);
                 startActivity(intent);
             }
         });
@@ -181,9 +192,9 @@ public class TabFragment3 extends Fragment{
         interest3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                genre = interest3.getText().toString().replace("#","");
+                genre = interest3.getText().toString().replace("#", "");
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("Genre",genre);
+                intent.putExtra("Genre", genre);
                 startActivity(intent);
             }
         });
@@ -191,9 +202,9 @@ public class TabFragment3 extends Fragment{
         interest4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                genre = interest4.getText().toString().replace("#","");
+                genre = interest4.getText().toString().replace("#", "");
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("Genre",genre);
+                intent.putExtra("Genre", genre);
                 startActivity(intent);
             }
         });
@@ -201,9 +212,9 @@ public class TabFragment3 extends Fragment{
         interest5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                genre = interest5.getText().toString().replace("#","");
+                genre = interest5.getText().toString().replace("#", "");
                 Intent intent = new Intent(getContext(), CategorizedGroupActivityMain.class);
-                intent.putExtra("Genre",genre);
+                intent.putExtra("Genre", genre);
                 startActivity(intent);
             }
         });
@@ -214,7 +225,7 @@ public class TabFragment3 extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), EditprofileActivity.class);
-                intent.putExtra("nameForm",name);
+                intent.putExtra("nameForm", name);
                 startActivity(intent);
             }
         });

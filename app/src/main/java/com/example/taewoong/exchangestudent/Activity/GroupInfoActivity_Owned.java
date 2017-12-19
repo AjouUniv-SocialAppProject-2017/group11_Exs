@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -76,6 +77,21 @@ public class GroupInfoActivity_Owned extends AppCompatActivity {
 
         mListView_Member = (ListView)findViewById(R.id.memberlist);
         mListView_Meeting = (ListView)findViewById(R.id.MeetingList);
+        mListView_Member.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        mListView_Meeting.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
         dataSetting_Member(Name, mListView_Member);
         dataSetting_Meeting(Name, mListView_Meeting);
 
@@ -105,7 +121,6 @@ public class GroupInfoActivity_Owned extends AppCompatActivity {
                 About = groupData.About;
                 Genre = groupData.Genre;
                 Region = groupData.Region;
-                Log.e("read",About + " " + Genre + " " + Region);
                 edit_about.setText(About);
                 edit_genre.setText(Genre);
                 edit_region.setText(Region);
@@ -122,11 +137,15 @@ public class GroupInfoActivity_Owned extends AppCompatActivity {
 
     private void dataSetting_Member(String name, ListView mListView) {
         mDatabaseMemberReference = FirebaseDatabase.getInstance().getReference("groups").child(name).child("Member");
+        List_member.clear();
         mDatabaseMemberReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot dsp:dataSnapshot.getChildren()){
                     List_member.add(dsp.getValue().toString());
+                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, List_member) ;
+                    adapter.notifyDataSetChanged();
+                    mListView_Member.setAdapter(adapter);
                 }
             }
 
@@ -135,18 +154,20 @@ public class GroupInfoActivity_Owned extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, List_member) ;
-        mListView.setAdapter(adapter);
     }
 
     private void dataSetting_Meeting(String name, final ListView mListView){
         mDatabaseMeetingReference = FirebaseDatabase.getInstance().getReference("groups").child(name).child("meetings");
+        List_Meeting.clear();
         mDatabaseMeetingReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot dsp:dataSnapshot.getChildren()){
                     String Meeting_name = dsp.getKey().split("\\(")[0];
                     List_Meeting.add(Meeting_name);
+                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, List_Meeting) ;
+                    adapter.notifyDataSetChanged();
+                    mListView_Meeting.setAdapter(adapter);
                 }
             }
 
@@ -155,8 +176,6 @@ public class GroupInfoActivity_Owned extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, List_Meeting) ;
-        mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

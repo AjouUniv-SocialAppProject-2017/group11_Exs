@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -68,6 +69,13 @@ public class MeetingInfoActivity_Reg extends AppCompatActivity{
         meeting_cost = (EditText)findViewById(R.id.costForm);
         meeting_about = (EditText)findViewById(R.id.aboutForm);
         member_listview = (ListView)findViewById(R.id.memberForm);
+        member_listview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
 
         Intent intent = getIntent();
         Meeting_Name = intent.getStringExtra("Meeting_title");
@@ -110,12 +118,18 @@ public class MeetingInfoActivity_Reg extends AppCompatActivity{
         dataSetting();
     }
     private void dataSetting(){
+
         mMeetingReference.child("Member").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                List_member.clear();
+                Log.e("here!","here!");
                 for(DataSnapshot dsp:dataSnapshot.getChildren()){
                     Log.e("dsp",dsp.getValue().toString());
                     List_member.add(dsp.getValue().toString());
+                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, List_member) ;
+                    adapter.notifyDataSetChanged();
+                    member_listview.setAdapter(adapter);
                 }
             }
 
@@ -124,8 +138,7 @@ public class MeetingInfoActivity_Reg extends AppCompatActivity{
 
             }
         });
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, List_member) ;
-        member_listview.setAdapter(adapter);
+
     }
 
 }

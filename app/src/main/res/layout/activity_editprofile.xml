@@ -79,33 +79,33 @@
 
     <TextView
         android:id="@+id/textView26"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btn_editprofile"
         android:layout_below="@+id/textView25"
-        android:layout_marginTop="29dp"
-        android:text="#Soccer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text=""
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView27"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView26"
         android:layout_alignBottom="@+id/textView26"
         android:layout_alignStart="@+id/button2"
-        android:text="#Study"
+        android:text=""
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView28"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView26"
         android:layout_alignBottom="@+id/textView26"
         android:layout_alignEnd="@+id/textView25"
         android:layout_marginEnd="23dp"
-        android:text="#Fitness"
+        android:text=""
         android:textSize="20sp" />
 
     <TextView
@@ -129,21 +129,22 @@
 
     <TextView
         android:id="@+id/textView29"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
+        android:layout_alignBaseline="@+id/textView32"
+        android:layout_alignBottom="@+id/textView32"
         android:layout_alignStart="@+id/textView28"
-        android:text="#Fitness"
+        android:text=""
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView32"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView30"
         android:layout_alignBottom="@+id/textView30"
         android:layout_toEndOf="@+id/textView30"
-        android:text="#Fitness"
+        android:text=""
         android:textSize="20sp" />
 
     <Button

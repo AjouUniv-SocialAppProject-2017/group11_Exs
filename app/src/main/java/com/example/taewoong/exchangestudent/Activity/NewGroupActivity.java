@@ -16,8 +16,11 @@ import com.example.taewoong.exchangestudent.Database.GroupData;
 import com.example.taewoong.exchangestudent.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Taewoong on 2017-12-06.
@@ -82,11 +85,23 @@ public class NewGroupActivity extends AppCompatActivity {
         });
     }
 
-    private void writeNewUser(String Name, String Host, String Region,String Genre, String About) {
+    private void writeNewUser(final String Name, String Host, String Region, String Genre, String About) {
         GroupData groupData = new GroupData(Host, Region, Genre, About);
         mDatabaseMeeting.child(Name).setValue(groupData);
         mDatabaseUser.child(currentUser.getUid()).child("OrgGroup").push().setValue(Name);
         mDatabaseUser.child(currentUser.getUid()).child("JoinedGroup").push().setValue(Name);
         mDatabaseGenre.child(Genre).push().setValue(Name);
+        mDatabaseUser.child(currentUser.getUid()).child("Name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String userName = dataSnapshot.getValue().toString();
+                FirebaseDatabase.getInstance().getReference("groups").child(Name).child("Member").push().setValue(userName);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

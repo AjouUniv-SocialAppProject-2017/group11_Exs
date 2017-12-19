@@ -78,8 +78,7 @@
             android:id="@+id/layou"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_marginLeft="10dp"
+            android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imageView"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/religion" />
@@ -146,10 +145,10 @@
             android:id="@+id/imageView9"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_alignTop="@+id/imageView7"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
             android:layout_toEndOf="@+id/imageView7"
             android:scaleType="fitXY"
-            android:layout_marginLeft="10dp"
             app:srcCompat="@drawable/pet" />
 
         <ImageView
